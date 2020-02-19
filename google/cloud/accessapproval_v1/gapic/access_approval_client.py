@@ -48,43 +48,7 @@ _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution(
 
 
 class AccessApprovalClient(object):
-    """
-    This API allows a customer to manage accesses to cloud resources by
-    Google personnel. It defines the following resource model:
-
-    -  The API has a collection of ``ApprovalRequest`` resources, named
-       ``approvalRequests/{approval_request_id}``
-    -  The API has top-level settings per Project/Folder/Organization, named
-       ``accessApprovalSettings``
-
-    The service also periodically emails a list of recipients, defined at
-    the Project/Folder/Organization level in the accessApprovalSettings,
-    when there is a pending ApprovalRequest for them to act on. The
-    ApprovalRequests can also optionally be published to a Cloud Pub/Sub
-    topic owned by the customer (for Beta, the Pub/Sub setup is managed
-    manually).
-
-    ApprovalRequests can be approved or dismissed. Google personel can only
-    access the indicated resource or resources if the request is approved
-    (subject to some exclusions:
-    https://cloud.google.com/access-approval/docs/overview#exclusions).
-
-    Note: Using Access Approval functionality will mean that Google may not
-    be able to meet the SLAs for your chosen products, as any support
-    response times may be dramatically increased. As such the SLAs do not
-    apply to any service disruption to the extent impacted by Customer's use
-    of Access Approval. Do not enable Access Approval for projects where you
-    may require high service availability and rapid response by Google Cloud
-    Support.
-
-    After a request is approved or dismissed, no further action may be taken
-    on it. Requests with the requested_expiration in the past or with no
-    activity for 14 days are considered dismissed. When an approval expires,
-    the request is considered dismissed.
-
-    If a request is not approved or dismissed, we call it pending.
-    LINT.IfChange
-    """
+    """javanano_as_lite"""
 
     SERVICE_ADDRESS = "accessapproval.googleapis.com:443"
     """The default address of the service."""
@@ -260,20 +224,17 @@ class AccessApprovalClient(object):
             ...         pass
 
         Args:
-            parent (str): The parent resource. This may be "projects/{project_id}",
-                "folders/{folder_id}", or "organizations/{organization_id}".
-            filter_ (str): A filter on the type of approval requests to retrieve. Must be one
-                of the following values:
+            parent (str): JSON name of this field. The value is set by protocol compiler. If
+                the user has set a "json_name" option on this field, that option's value
+                will be used. Otherwise, it's deduced from the field's name by
+                converting it to camelCase.
+            filter_ (str): An indicator of the behavior of a given field (for example, that a
+                field is required in requests, or given as output but ignored as input).
+                This **does not** change the behavior in protocol buffers itself; it
+                only denotes the behavior and may affect how API tooling handles the
+                field.
 
-                .. raw:: html
-
-                    <ol>
-                      <li>[not set]: Requests that are pending or have active approvals.</li>
-                      <li>ALL: All requests.</li>
-                      <li>PENDING: Only pending requests.</li>
-                      <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
-                      <li>DISMISSED: Only dismissed (including expired) requests.</li>
-                    </ol>
+                Note: This enum **may** receive new values in the future.
             page_size (int): The maximum number of resources contained in the
                 underlying API response. If page streaming is performed per-
                 resource, this parameter does not affect the return value. If page
@@ -351,8 +312,8 @@ class AccessApprovalClient(object):
         metadata=None,
     ):
         """
-        Gets an approval request. Returns NOT_FOUND if the request does not
-        exist.
+        An annotation that describes a resource reference, see
+        ``ResourceReference``.
 
         Example:
             >>> from google.cloud import accessapproval_v1
@@ -420,10 +381,20 @@ class AccessApprovalClient(object):
         metadata=None,
     ):
         """
-        Approves a request and returns the updated ApprovalRequest.
+        Customer made a request or raised an issue that required the
+        principal to access customer data. ``detail`` is of the form ("#####" is
+        the issue ID):
 
-        Returns NOT_FOUND if the request does not exist. Returns
-        FAILED_PRECONDITION if the request exists but is not in a pending state.
+        .. raw:: html
+
+            <ol>
+              <li>"Feedback Report: #####"</li>
+              <li>"Case Number: #####"</li>
+              <li>"Case ID: #####"</li>
+              <li>"E-PIN Reference: #####"</li>
+              <li>"Google-#####"</li>
+              <li>"T-#####"</li>
+            </ol>
 
         Example:
             >>> from google.cloud import accessapproval_v1
@@ -496,16 +467,22 @@ class AccessApprovalClient(object):
         metadata=None,
     ):
         """
-        Dismisses a request. Returns the updated ApprovalRequest.
+        Identifies which part of the FileDescriptorProto was defined at this
+        location.
 
-        NOTE: This does not deny access to the resource if another request has
-        been made and approved. It is equivalent in effect to ignoring the
-        request altogether.
+        Each element is a field number or an index. They form a path from the
+        root FileDescriptorProto to the place where the definition. For example,
+        this path: [ 4, 3, 2, 7, 1 ] refers to: file.message_type(3) // 4, 3
+        .field(7) // 2, 7 .name() // 1 This is because
+        FileDescriptorProto.message_type has field number 4: repeated
+        DescriptorProto message_type = 4; and DescriptorProto.field has field
+        number 2: repeated FieldDescriptorProto field = 2; and
+        FieldDescriptorProto.name has field number 1: optional string name = 1;
 
-        Returns NOT_FOUND if the request does not exist.
-
-        Returns FAILED_PRECONDITION if the request exists but is not in a
-        pending state.
+        Thus, the above path gives the location of a field name. If we removed
+        the last element: [ 4, 3, 2, 7 ] this path refers to the whole field
+        declaration (from the beginning of the label to the terminating
+        semicolon).
 
         Example:
             >>> from google.cloud import accessapproval_v1
@@ -642,9 +619,226 @@ class AccessApprovalClient(object):
         metadata=None,
     ):
         """
-        Updates the settings associated with a project, folder, or
-        organization. Settings to update are determined by the value of
-        field_mask.
+        ``FieldMask`` represents a set of symbolic field paths, for example:
+
+        ::
+
+            paths: "f.a"
+            paths: "f.b.d"
+
+        Here ``f`` represents a field in some root message, ``a`` and ``b``
+        fields in the message found in ``f``, and ``d`` a field found in the
+        message in ``f.b``.
+
+        Field masks are used to specify a subset of fields that should be
+        returned by a get operation or modified by an update operation. Field
+        masks also have a custom JSON encoding (see below).
+
+        # Field Masks in Projections
+
+        When used in the context of a projection, a response message or
+        sub-message is filtered by the API to only contain those fields as
+        specified in the mask. For example, if the mask in the previous example
+        is applied to a response message as follows:
+
+        ::
+
+            f {
+              a : 22
+              b {
+                d : 1
+                x : 2
+              }
+              y : 13
+            }
+            z: 8
+
+        The result will not contain specific values for fields x,y and z (their
+        value will be set to the default, and omitted in proto text output):
+
+        ::
+
+            f {
+              a : 22
+              b {
+                d : 1
+              }
+            }
+
+        A repeated field is not allowed except at the last position of a paths
+        string.
+
+        If a FieldMask object is not present in a get operation, the operation
+        applies to all fields (as if a FieldMask of all fields had been
+        specified).
+
+        Note that a field mask does not necessarily apply to the top-level
+        response message. In case of a REST get operation, the field mask
+        applies directly to the response, but in case of a REST list operation,
+        the mask instead applies to each individual message in the returned
+        resource list. In case of a REST custom method, other definitions may be
+        used. Where the mask applies will be clearly documented together with
+        its declaration in the API. In any case, the effect on the returned
+        resource/resources is required behavior for APIs.
+
+        # Field Masks in Update Operations
+
+        A field mask in update operations specifies which fields of the targeted
+        resource are going to be updated. The API is required to only change the
+        values of the fields as specified in the mask and leave the others
+        untouched. If a resource is passed in to describe the updated values,
+        the API ignores the values of all fields not covered by the mask.
+
+        If a repeated field is specified for an update operation, new values
+        will be appended to the existing repeated field in the target resource.
+        Note that a repeated field is only allowed in the last position of a
+        ``paths`` string.
+
+        If a sub-message is specified in the last position of the field mask for
+        an update operation, then new value will be merged into the existing
+        sub-message in the target resource.
+
+        For example, given the target message:
+
+        ::
+
+            f {
+              b {
+                d: 1
+                x: 2
+              }
+              c: [1]
+            }
+
+        And an update message:
+
+        ::
+
+            f {
+              b {
+                d: 10
+              }
+              c: [2]
+            }
+
+        then if the field mask is:
+
+        paths: ["f.b", "f.c"]
+
+        then the result will be:
+
+        ::
+
+            f {
+              b {
+                d: 10
+                x: 2
+              }
+              c: [1, 2]
+            }
+
+        An implementation may provide options to override this default behavior
+        for repeated and message fields.
+
+        In order to reset a field's value to the default, the field must be in
+        the mask and set to the default value in the provided resource. Hence,
+        in order to reset all fields of a resource, provide a default instance
+        of the resource and set all fields in the mask, or do not provide a mask
+        as described below.
+
+        If a field mask is not present on update, the operation applies to all
+        fields (as if a field mask of all fields has been specified). Note that
+        in the presence of schema evolution, this may mean that fields the
+        client does not know and has therefore not filled into the request will
+        be reset to their default. If this is unwanted behavior, a specific
+        service may require a client to always specify a field mask, producing
+        an error if not.
+
+        As with get operations, the location of the resource which describes the
+        updated values in the request message depends on the operation kind. In
+        any case, the effect of the field mask is required to be honored by the
+        API.
+
+        ## Considerations for HTTP REST
+
+        The HTTP kind of an update operation which uses a field mask must be set
+        to PATCH instead of PUT in order to satisfy HTTP semantics (PUT must
+        only be used for full updates).
+
+        # JSON Encoding of Field Masks
+
+        In JSON, a field mask is encoded as a single string where paths are
+        separated by a comma. Fields name in each path are converted to/from
+        lower-camel naming conventions.
+
+        As an example, consider the following message declarations:
+
+        ::
+
+            message Profile {
+              User user = 1;
+              Photo photo = 2;
+            }
+            message User {
+              string display_name = 1;
+              string address = 2;
+            }
+
+        In proto a field mask for ``Profile`` may look as such:
+
+        ::
+
+            mask {
+              paths: "user.display_name"
+              paths: "photo"
+            }
+
+        In JSON, the same mask is represented as below:
+
+        ::
+
+            {
+              mask: "user.displayName,photo"
+            }
+
+        # Field Masks and Oneof Fields
+
+        Field masks treat fields in oneofs just as regular fields. Consider the
+        following message:
+
+        ::
+
+            message SampleMessage {
+              oneof test_oneof {
+                string name = 4;
+                SubMessage sub_message = 9;
+              }
+            }
+
+        The field mask can be:
+
+        ::
+
+            mask {
+              paths: "name"
+            }
+
+        Or:
+
+        ::
+
+            mask {
+              paths: "sub_message"
+            }
+
+        Note that oneof type names ("test_oneof" in this case) cannot be used in
+        paths.
+
+        ## Field Mask Verification
+
+        The implementation of any API method which has a FieldMask type field in
+        the request should verify the included field paths, and return an
+        ``INVALID_ARGUMENT`` error if any path is duplicated or unmappable.
 
         Example:
             >>> from google.cloud import accessapproval_v1
@@ -658,16 +852,37 @@ class AccessApprovalClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.accessapproval_v1.types.AccessApprovalSettings`
-            update_mask (Union[dict, ~google.cloud.accessapproval_v1.types.FieldMask]): The update mask applies to the settings. Only the top level fields
-                of AccessApprovalSettings (notification_emails & enrolled_services) are
-                supported. For each field, if it is included, the currently stored value
-                will be entirely overwritten with the value of the field passed in this
-                request.
+            update_mask (Union[dict, ~google.cloud.accessapproval_v1.types.FieldMask]): Protocol Buffers - Google's data interchange format Copyright 2008
+                Google Inc. All rights reserved.
+                https://developers.google.com/protocol-buffers/
 
-                For the ``FieldMask`` definition, see
-                https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
-                If this field is left unset, only the notification_emails field will be
-                updated.
+                Redistribution and use in source and binary forms, with or without
+                modification, are permitted provided that the following conditions are
+                met:
+
+                ::
+
+                    * Redistributions of source code must retain the above copyright
+
+                notice, this list of conditions and the following disclaimer. \*
+                Redistributions in binary form must reproduce the above copyright
+                notice, this list of conditions and the following disclaimer in the
+                documentation and/or other materials provided with the distribution. \*
+                Neither the name of Google Inc. nor the names of its contributors may be
+                used to endorse or promote products derived from this software without
+                specific prior written permission.
+
+                THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+                IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+                TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+                PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+                OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+                EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+                PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+                PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+                LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+                NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+                SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.accessapproval_v1.types.FieldMask`

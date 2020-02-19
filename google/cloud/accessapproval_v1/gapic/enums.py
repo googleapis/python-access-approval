@@ -39,20 +39,10 @@ class AccessReason(object):
 
         Attributes:
           TYPE_UNSPECIFIED (int): Default value for proto, shouldn't be used.
-          CUSTOMER_INITIATED_SUPPORT (int): Customer made a request or raised an issue that required the
-          principal to access customer data. ``detail`` is of the form ("#####" is
-          the issue ID):
-
-          .. raw:: html
-
-              <ol>
-                <li>"Feedback Report: #####"</li>
-                <li>"Case Number: #####"</li>
-                <li>"Case ID: #####"</li>
-                <li>"E-PIN Reference: #####"</li>
-                <li>"Google-#####"</li>
-                <li>"T-#####"</li>
-              </ol>
+          CUSTOMER_INITIATED_SUPPORT (int): The plural name used in the resource name, such as 'projects' for
+          the name of 'projects/{project}'. It is the same concept of the
+          ``plural`` field in k8s CRD spec
+          https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/
           GOOGLE_INITIATED_SERVICE (int): The principal accessed customer data in order to diagnose or resolve a
           suspected issue in services or a known outage. Often this access is used
           to confirm that customers are not affected by a suspected service issue
