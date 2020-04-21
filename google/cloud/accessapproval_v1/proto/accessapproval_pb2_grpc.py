@@ -56,7 +56,6 @@ class AccessApprovalStub(object):
   is considered dismissed.
 
   If a request is not approved or dismissed, we call it pending.
-  LINT.IfChange
   """
 
     def __init__(self, channel):
@@ -136,7 +135,6 @@ class AccessApprovalServicer(object):
   is considered dismissed.
 
   If a request is not approved or dismissed, we call it pending.
-  LINT.IfChange
   """
 
     def ListApprovalRequests(self, request, context):
