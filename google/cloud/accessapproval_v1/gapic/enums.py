@@ -39,22 +39,20 @@ class AccessReason(object):
 
         Attributes:
           TYPE_UNSPECIFIED (int): Default value for proto, shouldn't be used.
-          CUSTOMER_INITIATED_SUPPORT (int): Identifies which part of the FileDescriptorProto was defined at this
-          location.
+          CUSTOMER_INITIATED_SUPPORT (int): Customer made a request or raised an issue that required the
+          principal to access customer data. ``detail`` is of the form ("#####" is
+          the issue ID):
 
-          Each element is a field number or an index. They form a path from the
-          root FileDescriptorProto to the place where the definition. For example,
-          this path: [ 4, 3, 2, 7, 1 ] refers to: file.message_type(3) // 4, 3
-          .field(7) // 2, 7 .name() // 1 This is because
-          FileDescriptorProto.message_type has field number 4: repeated
-          DescriptorProto message_type = 4; and DescriptorProto.field has field
-          number 2: repeated FieldDescriptorProto field = 2; and
-          FieldDescriptorProto.name has field number 1: optional string name = 1;
+          .. raw:: html
 
-          Thus, the above path gives the location of a field name. If we removed
-          the last element: [ 4, 3, 2, 7 ] this path refers to the whole field
-          declaration (from the beginning of the label to the terminating
-          semicolon).
+              <ol>
+                <li>"Feedback Report: #####"</li>
+                <li>"Case Number: #####"</li>
+                <li>"Case ID: #####"</li>
+                <li>"E-PIN Reference: #####"</li>
+                <li>"Google-#####"</li>
+                <li>"T-#####"</li>
+              </ol>
           GOOGLE_INITIATED_SERVICE (int): The principal accessed customer data in order to diagnose or resolve a
           suspected issue in services or a known outage. Often this access is used
           to confirm that customers are not affected by a suspected service issue
