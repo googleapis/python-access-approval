@@ -49,40 +49,8 @@ _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution(
 
 class AccessApprovalClient(object):
     """
-    This API allows a customer to manage accesses to cloud resources by
-    Google personnel. It defines the following resource model:
-
-    -  The API has a collection of ``ApprovalRequest`` resources, named
-       ``approvalRequests/{approval_request_id}``
-    -  The API has top-level settings per Project/Folder/Organization, named
-       ``accessApprovalSettings``
-
-    The service also periodically emails a list of recipients, defined at
-    the Project/Folder/Organization level in the accessApprovalSettings,
-    when there is a pending ApprovalRequest for them to act on. The
-    ApprovalRequests can also optionally be published to a Cloud Pub/Sub
-    topic owned by the customer (for Beta, the Pub/Sub setup is managed
-    manually).
-
-    ApprovalRequests can be approved or dismissed. Google personel can only
-    access the indicated resource or resources if the request is approved
-    (subject to some exclusions:
-    https://cloud.google.com/access-approval/docs/overview#exclusions).
-
-    Note: Using Access Approval functionality will mean that Google may not
-    be able to meet the SLAs for your chosen products, as any support
-    response times may be dramatically increased. As such the SLAs do not
-    apply to any service disruption to the extent impacted by Customer's use
-    of Access Approval. Do not enable Access Approval for projects where you
-    may require high service availability and rapid response by Google Cloud
-    Support.
-
-    After a request is approved or dismissed, no further action may be taken
-    on it. Requests with the requested_expiration in the past or with no
-    activity for 14 days are considered dismissed. When an approval expires,
-    the request is considered dismissed.
-
-    If a request is not approved or dismissed, we call it pending.
+    The parent resource. This may be "projects/{project_id}",
+    "folders/{folder_id}", or "organizations/{organization_id}".
     """
 
     SERVICE_ADDRESS = "accessapproval.googleapis.com:443"
@@ -259,20 +227,17 @@ class AccessApprovalClient(object):
             ...         pass
 
         Args:
-            parent (str): The parent resource. This may be "projects/{project_id}",
-                "folders/{folder_id}", or "organizations/{organization_id}".
-            filter_ (str): A filter on the type of approval requests to retrieve. Must be one
-                of the following values:
+            parent (str): The same concept of the ``singular`` field in k8s CRD spec
+                https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/
+                Such as "project" for the ``resourcemanager.googleapis.com/Project``
+                type.
+            filter_ (str): An indicator of the behavior of a given field (for example, that a
+                field is required in requests, or given as output but ignored as input).
+                This **does not** change the behavior in protocol buffers itself; it
+                only denotes the behavior and may affect how API tooling handles the
+                field.
 
-                .. raw:: html
-
-                    <ol>
-                      <li>[not set]: Requests that are pending or have active approvals.</li>
-                      <li>ALL: All requests.</li>
-                      <li>PENDING: Only pending requests.</li>
-                      <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
-                      <li>DISMISSED: Only dismissed (including expired) requests.</li>
-                    </ol>
+                Note: This enum **may** receive new values in the future.
             page_size (int): The maximum number of resources contained in the
                 underlying API response. If page streaming is performed per-
                 resource, this parameter does not affect the return value. If page
@@ -350,8 +315,7 @@ class AccessApprovalClient(object):
         metadata=None,
     ):
         """
-        Gets an approval request. Returns NOT_FOUND if the request does not
-        exist.
+        javanano_as_lite
 
         Example:
             >>> from google.cloud import accessapproval_v1
@@ -419,10 +383,8 @@ class AccessApprovalClient(object):
         metadata=None,
     ):
         """
-        Approves a request and returns the updated ApprovalRequest.
-
-        Returns NOT_FOUND if the request does not exist. Returns
-        FAILED_PRECONDITION if the request exists but is not in a pending state.
+        An annotation that describes a resource definition without a
+        corresponding message; see ``ResourceDescriptor``.
 
         Example:
             >>> from google.cloud import accessapproval_v1
@@ -495,16 +457,10 @@ class AccessApprovalClient(object):
         metadata=None,
     ):
         """
-        Dismisses a request. Returns the updated ApprovalRequest.
+        Approves a request and returns the updated ApprovalRequest.
 
-        NOTE: This does not deny access to the resource if another request has
-        been made and approved. It is equivalent in effect to ignoring the
-        request altogether.
-
-        Returns NOT_FOUND if the request does not exist.
-
-        Returns FAILED_PRECONDITION if the request exists but is not in a
-        pending state.
+        Returns NOT_FOUND if the request does not exist. Returns
+        FAILED_PRECONDITION if the request exists but is not in a pending state.
 
         Example:
             >>> from google.cloud import accessapproval_v1
@@ -641,9 +597,24 @@ class AccessApprovalClient(object):
         metadata=None,
     ):
         """
-        Updates the settings associated with a project, folder, or
-        organization. Settings to update are determined by the value of
-        field_mask.
+        Optional. The historical or future-looking state of the resource
+        pattern.
+
+        Example:
+
+        ::
+
+            // The InspectTemplate message originally only supported resource
+            // names with organization, and project was added later.
+            message InspectTemplate {
+              option (google.api.resource) = {
+                type: "dlp.googleapis.com/InspectTemplate"
+                pattern:
+                "organizations/{organization}/inspectTemplates/{inspect_template}"
+                pattern: "projects/{project}/inspectTemplates/{inspect_template}"
+                history: ORIGINALLY_SINGLE_PATTERN
+              };
+            }
 
         Example:
             >>> from google.cloud import accessapproval_v1
@@ -657,16 +628,37 @@ class AccessApprovalClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.accessapproval_v1.types.AccessApprovalSettings`
-            update_mask (Union[dict, ~google.cloud.accessapproval_v1.types.FieldMask]): The update mask applies to the settings. Only the top level fields
-                of AccessApprovalSettings (notification_emails & enrolled_services) are
-                supported. For each field, if it is included, the currently stored value
-                will be entirely overwritten with the value of the field passed in this
-                request.
+            update_mask (Union[dict, ~google.cloud.accessapproval_v1.types.FieldMask]): Protocol Buffers - Google's data interchange format Copyright 2008
+                Google Inc. All rights reserved.
+                https://developers.google.com/protocol-buffers/
 
-                For the ``FieldMask`` definition, see
-                https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
-                If this field is left unset, only the notification_emails field will be
-                updated.
+                Redistribution and use in source and binary forms, with or without
+                modification, are permitted provided that the following conditions are
+                met:
+
+                ::
+
+                    * Redistributions of source code must retain the above copyright
+
+                notice, this list of conditions and the following disclaimer. \*
+                Redistributions in binary form must reproduce the above copyright
+                notice, this list of conditions and the following disclaimer in the
+                documentation and/or other materials provided with the distribution. \*
+                Neither the name of Google Inc. nor the names of its contributors may be
+                used to endorse or promote products derived from this software without
+                specific prior written permission.
+
+                THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+                IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+                TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+                PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+                OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+                EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+                PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+                PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+                LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+                NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+                SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.accessapproval_v1.types.FieldMask`
