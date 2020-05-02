@@ -129,8 +129,7 @@ class AccessApprovalGrpcTransport(object):
     def get_approval_request(self):
         """Return the gRPC stub for :meth:`AccessApprovalClient.get_approval_request`.
 
-        Gets an approval request. Returns NOT_FOUND if the request does not
-        exist.
+        javanano_as_lite
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -143,10 +142,8 @@ class AccessApprovalGrpcTransport(object):
     def approve_approval_request(self):
         """Return the gRPC stub for :meth:`AccessApprovalClient.approve_approval_request`.
 
-        Approves a request and returns the updated ApprovalRequest.
-
-        Returns NOT_FOUND if the request does not exist. Returns
-        FAILED_PRECONDITION if the request exists but is not in a pending state.
+        An annotation that describes a resource definition without a
+        corresponding message; see ``ResourceDescriptor``.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -159,16 +156,10 @@ class AccessApprovalGrpcTransport(object):
     def dismiss_approval_request(self):
         """Return the gRPC stub for :meth:`AccessApprovalClient.dismiss_approval_request`.
 
-        Dismisses a request. Returns the updated ApprovalRequest.
+        Approves a request and returns the updated ApprovalRequest.
 
-        NOTE: This does not deny access to the resource if another request has
-        been made and approved. It is equivalent in effect to ignoring the
-        request altogether.
-
-        Returns NOT_FOUND if the request does not exist.
-
-        Returns FAILED_PRECONDITION if the request exists but is not in a
-        pending state.
+        Returns NOT_FOUND if the request does not exist. Returns
+        FAILED_PRECONDITION if the request exists but is not in a pending state.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -194,9 +185,24 @@ class AccessApprovalGrpcTransport(object):
     def update_access_approval_settings(self):
         """Return the gRPC stub for :meth:`AccessApprovalClient.update_access_approval_settings`.
 
-        Updates the settings associated with a project, folder, or
-        organization. Settings to update are determined by the value of
-        field_mask.
+        Optional. The historical or future-looking state of the resource
+        pattern.
+
+        Example:
+
+        ::
+
+            // The InspectTemplate message originally only supported resource
+            // names with organization, and project was added later.
+            message InspectTemplate {
+              option (google.api.resource) = {
+                type: "dlp.googleapis.com/InspectTemplate"
+                pattern:
+                "organizations/{organization}/inspectTemplates/{inspect_template}"
+                pattern: "projects/{project}/inspectTemplates/{inspect_template}"
+                history: ORIGINALLY_SINGLE_PATTERN
+              };
+            }
 
         Returns:
             Callable: A callable which accepts the appropriate
