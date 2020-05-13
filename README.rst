@@ -81,4 +81,4 @@ Next Steps
    APIs that we cover.
 
 .. _Access Approval API Product documentation:  https://cloud.google.com/access-approval
-.. _repository’s main README: https://github.com/googleapis/google-cloud-python/blob/master/README.rst
+.. _README: https://github.com/googleapis/google-cloud-python/blob/master/README.rst
