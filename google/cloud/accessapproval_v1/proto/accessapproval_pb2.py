@@ -1435,7 +1435,8 @@ AccessApprovalSettings = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _ACCESSAPPROVALSETTINGS,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
-        "__doc__": """Settings on a Project/Folder/Organization related to Access Approval.
+        "__doc__": """Settings on a Project/Folder/Organization related to
+  Access Approval.
   
   
   Attributes:
