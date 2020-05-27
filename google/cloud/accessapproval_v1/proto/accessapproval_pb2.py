@@ -1331,7 +1331,8 @@ ResourceProperties = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _RESOURCEPROPERTIES,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
-        "__doc__": """The properties associated with the resource of the request.
+        "__doc__": """The properties associated with the resource of the
+  request.
   
   
   Attributes:
@@ -1350,8 +1351,7 @@ ApprovalRequest = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _APPROVALREQUEST,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
-        "__doc__": """A request for the customer to approve access to a
-  resource.
+        "__doc__": """A request for the customer to approve access to a resource.
   
   
   Attributes:
