@@ -1341,7 +1341,6 @@ ApprovalRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _APPROVALREQUEST,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """A request for the customer to approve access to a resource.
-
   Attributes:
       name:
           The resource name of the request. Format is "``{projects|folders
@@ -1420,7 +1419,6 @@ AccessApprovalSettings = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _ACCESSAPPROVALSETTINGS,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Settings on a Project/Folder/Organization related to Access Approval.
-
   Attributes:
       name:
           The resource name of the settings. Format is one of:  .. raw::
