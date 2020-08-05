@@ -27,6 +27,7 @@ class EnrollmentLevel(enum.IntEnum):
       ENROLLMENT_LEVEL_UNSPECIFIED (int): Default value for proto, shouldn't be used.
       BLOCK_ALL (int): Service is enrolled in Access Approval for all requests
     """
+
     ENROLLMENT_LEVEL_UNSPECIFIED = 0
     BLOCK_ALL = 1
 
@@ -59,8 +60,8 @@ class AccessReason(object):
           GOOGLE_INITIATED_REVIEW (int): Google initiated service for security, fraud, abuse, or compliance
           purposes.
         """
+
         TYPE_UNSPECIFIED = 0
         CUSTOMER_INITIATED_SUPPORT = 1
         GOOGLE_INITIATED_SERVICE = 2
         GOOGLE_INITIATED_REVIEW = 3
-    

@@ -24,9 +24,9 @@ from google.cloud.accessapproval_v1.proto import accessapproval_pb2
 from google.protobuf import empty_pb2
 
 
-
 class MultiCallableStub(object):
     """Stub for the grpc.UnaryUnaryMultiCallable interface."""
+
     def __init__(self, method, channel_stub):
         self.method = method
         self.channel_stub = channel_stub
@@ -47,12 +47,12 @@ class MultiCallableStub(object):
 
 class ChannelStub(object):
     """Stub for the grpc.Channel interface."""
-    def __init__(self, responses = []):
+
+    def __init__(self, responses=[]):
         self.responses = responses
         self.requests = []
 
-    def unary_unary(
-            self, method, request_serializer=None, response_deserializer=None):
+    def unary_unary(self, method, request_serializer=None, response_deserializer=None):
         return MultiCallableStub(method, self)
 
 
@@ -61,18 +61,22 @@ class CustomException(Exception):
 
 
 class TestAccessApprovalClient(object):
-
     def test_list_approval_requests(self):
         # Setup Expected Response
-        next_page_token = ''
+        next_page_token = ""
         approval_requests_element = {}
         approval_requests = [approval_requests_element]
-        expected_response = {'next_page_token': next_page_token, 'approval_requests': approval_requests}
-        expected_response = accessapproval_pb2.ListApprovalRequestsResponse(**expected_response)
+        expected_response = {
+            "next_page_token": next_page_token,
+            "approval_requests": approval_requests,
+        }
+        expected_response = accessapproval_pb2.ListApprovalRequestsResponse(
+            **expected_response
+        )
 
         # Mock the API response
-        channel = ChannelStub(responses = [expected_response])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[expected_response])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -89,8 +93,8 @@ class TestAccessApprovalClient(object):
         assert expected_request == actual_request
 
     def test_list_approval_requests_exception(self):
-        channel = ChannelStub(responses = [CustomException()])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[CustomException()])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -101,14 +105,17 @@ class TestAccessApprovalClient(object):
 
     def test_get_approval_request(self):
         # Setup Expected Response
-        name = 'name3373707'
-        requested_resource_name = 'requestedResourceName-1409378037'
-        expected_response = {'name': name, 'requested_resource_name': requested_resource_name}
+        name = "name3373707"
+        requested_resource_name = "requestedResourceName-1409378037"
+        expected_response = {
+            "name": name,
+            "requested_resource_name": requested_resource_name,
+        }
         expected_response = accessapproval_pb2.ApprovalRequest(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses = [expected_response])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[expected_response])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -123,8 +130,8 @@ class TestAccessApprovalClient(object):
 
     def test_get_approval_request_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses = [CustomException()])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[CustomException()])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -134,14 +141,17 @@ class TestAccessApprovalClient(object):
 
     def test_approve_approval_request(self):
         # Setup Expected Response
-        name = 'name3373707'
-        requested_resource_name = 'requestedResourceName-1409378037'
-        expected_response = {'name': name, 'requested_resource_name': requested_resource_name}
+        name = "name3373707"
+        requested_resource_name = "requestedResourceName-1409378037"
+        expected_response = {
+            "name": name,
+            "requested_resource_name": requested_resource_name,
+        }
         expected_response = accessapproval_pb2.ApprovalRequest(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses = [expected_response])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[expected_response])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -156,8 +166,8 @@ class TestAccessApprovalClient(object):
 
     def test_approve_approval_request_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses = [CustomException()])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[CustomException()])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -167,14 +177,17 @@ class TestAccessApprovalClient(object):
 
     def test_dismiss_approval_request(self):
         # Setup Expected Response
-        name = 'name3373707'
-        requested_resource_name = 'requestedResourceName-1409378037'
-        expected_response = {'name': name, 'requested_resource_name': requested_resource_name}
+        name = "name3373707"
+        requested_resource_name = "requestedResourceName-1409378037"
+        expected_response = {
+            "name": name,
+            "requested_resource_name": requested_resource_name,
+        }
         expected_response = accessapproval_pb2.ApprovalRequest(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses = [expected_response])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[expected_response])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -189,8 +202,8 @@ class TestAccessApprovalClient(object):
 
     def test_dismiss_approval_request_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses = [CustomException()])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[CustomException()])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -200,14 +213,16 @@ class TestAccessApprovalClient(object):
 
     def test_get_access_approval_settings(self):
         # Setup Expected Response
-        name = 'name3373707'
+        name = "name3373707"
         enrolled_ancestor = False
-        expected_response = {'name': name, 'enrolled_ancestor': enrolled_ancestor}
-        expected_response = accessapproval_pb2.AccessApprovalSettings(**expected_response)
+        expected_response = {"name": name, "enrolled_ancestor": enrolled_ancestor}
+        expected_response = accessapproval_pb2.AccessApprovalSettings(
+            **expected_response
+        )
 
         # Mock the API response
-        channel = ChannelStub(responses = [expected_response])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[expected_response])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -222,8 +237,8 @@ class TestAccessApprovalClient(object):
 
     def test_get_access_approval_settings_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses = [CustomException()])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[CustomException()])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -233,14 +248,16 @@ class TestAccessApprovalClient(object):
 
     def test_update_access_approval_settings(self):
         # Setup Expected Response
-        name = 'name3373707'
+        name = "name3373707"
         enrolled_ancestor = False
-        expected_response = {'name': name, 'enrolled_ancestor': enrolled_ancestor}
-        expected_response = accessapproval_pb2.AccessApprovalSettings(**expected_response)
+        expected_response = {"name": name, "enrolled_ancestor": enrolled_ancestor}
+        expected_response = accessapproval_pb2.AccessApprovalSettings(
+            **expected_response
+        )
 
         # Mock the API response
-        channel = ChannelStub(responses = [expected_response])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[expected_response])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -255,8 +272,8 @@ class TestAccessApprovalClient(object):
 
     def test_update_access_approval_settings_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses = [CustomException()])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[CustomException()])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -266,7 +283,7 @@ class TestAccessApprovalClient(object):
 
     def test_delete_access_approval_settings(self):
         channel = ChannelStub()
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()
@@ -280,8 +297,8 @@ class TestAccessApprovalClient(object):
 
     def test_delete_access_approval_settings_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses = [CustomException()])
-        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
+        channel = ChannelStub(responses=[CustomException()])
+        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
         with patch as create_channel:
             create_channel.return_value = channel
             client = accessapproval_v1.AccessApprovalClient()

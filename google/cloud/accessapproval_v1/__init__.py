@@ -26,11 +26,12 @@ from google.cloud.accessapproval_v1.gapic import enums
 
 if sys.version_info[:2] == (2, 7):
     message = (
-        'A future version of this library will drop support for Python 2.7.'
-        'More details about Python 2 support for Google Cloud Client Libraries'
-        'can be found at https://cloud.google.com/python/docs/python2-sunset/'
+        "A future version of this library will drop support for Python 2.7."
+        "More details about Python 2 support for Google Cloud Client Libraries"
+        "can be found at https://cloud.google.com/python/docs/python2-sunset/"
     )
     warnings.warn(message, DeprecationWarning)
+
 
 class AccessApprovalClient(access_approval_client.AccessApprovalClient):
     __doc__ = access_approval_client.AccessApprovalClient.__doc__
@@ -38,7 +39,7 @@ class AccessApprovalClient(access_approval_client.AccessApprovalClient):
 
 
 __all__ = (
-    'enums',
-    'types',
-    'AccessApprovalClient',
+    "enums",
+    "types",
+    "AccessApprovalClient",
 )

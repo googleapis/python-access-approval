@@ -28,14 +28,17 @@ class AccessApprovalGrpcTransport(object):
     which can be used to take advantage of advanced
     features of gRPC.
     """
+
     # The scopes needed to make gRPC calls to all of the methods defined
     # in this service.
-    _OAUTH_SCOPES = (
-        'https://www.googleapis.com/auth/cloud-platform',
-    )
+    _OAUTH_SCOPES = ("https://www.googleapis.com/auth/cloud-platform",)
 
-    def __init__(self, channel=None, credentials=None,
-                 address='accessapproval.googleapis.com:443'):
+    def __init__(
+        self,
+        channel=None,
+        credentials=None,
+        address="accessapproval.googleapis.com:443",
+    ):
         """Instantiate the transport class.
 
         Args:
@@ -53,8 +56,7 @@ class AccessApprovalGrpcTransport(object):
         # exception (channels come with credentials baked in already).
         if channel is not None and credentials is not None:
             raise ValueError(
-                'The `channel` and `credentials` arguments are mutually '
-                'exclusive.',
+                "The `channel` and `credentials` arguments are mutually " "exclusive.",
             )
 
         # Create the channel.
@@ -63,8 +65,8 @@ class AccessApprovalGrpcTransport(object):
                 address=address,
                 credentials=credentials,
                 options={
-                    'grpc.max_send_message_length': -1,
-                    'grpc.max_receive_message_length': -1,
+                    "grpc.max_send_message_length": -1,
+                    "grpc.max_receive_message_length": -1,
                 }.items(),
             )
 
@@ -73,16 +75,13 @@ class AccessApprovalGrpcTransport(object):
         # gRPC uses objects called "stubs" that are bound to the
         # channel and provide a basic method for each RPC.
         self._stubs = {
-            'access_approval_stub': accessapproval_pb2_grpc.AccessApprovalStub(channel),
+            "access_approval_stub": accessapproval_pb2_grpc.AccessApprovalStub(channel),
         }
-
 
     @classmethod
     def create_channel(
-                cls,
-                address='accessapproval.googleapis.com:443',
-                credentials=None,
-                **kwargs):
+        cls, address="accessapproval.googleapis.com:443", credentials=None, **kwargs
+    ):
         """Create and return a gRPC channel object.
 
         Args:
@@ -99,10 +98,7 @@ class AccessApprovalGrpcTransport(object):
             grpc.Channel: A gRPC channel object.
         """
         return google.api_core.grpc_helpers.create_channel(
-            address,
-            credentials=credentials,
-            scopes=cls._OAUTH_SCOPES,
-            **kwargs
+            address, credentials=credentials, scopes=cls._OAUTH_SCOPES, **kwargs
         )
 
     @property
@@ -127,7 +123,7 @@ class AccessApprovalGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['access_approval_stub'].ListApprovalRequests
+        return self._stubs["access_approval_stub"].ListApprovalRequests
 
     @property
     def get_approval_request(self):
@@ -141,7 +137,7 @@ class AccessApprovalGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['access_approval_stub'].GetApprovalRequest
+        return self._stubs["access_approval_stub"].GetApprovalRequest
 
     @property
     def approve_approval_request(self):
@@ -157,7 +153,7 @@ class AccessApprovalGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['access_approval_stub'].ApproveApprovalRequest
+        return self._stubs["access_approval_stub"].ApproveApprovalRequest
 
     @property
     def dismiss_approval_request(self):
@@ -179,7 +175,7 @@ class AccessApprovalGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['access_approval_stub'].DismissApprovalRequest
+        return self._stubs["access_approval_stub"].DismissApprovalRequest
 
     @property
     def get_access_approval_settings(self):
@@ -192,7 +188,7 @@ class AccessApprovalGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['access_approval_stub'].GetAccessApprovalSettings
+        return self._stubs["access_approval_stub"].GetAccessApprovalSettings
 
     @property
     def update_access_approval_settings(self):
@@ -207,7 +203,7 @@ class AccessApprovalGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['access_approval_stub'].UpdateAccessApprovalSettings
+        return self._stubs["access_approval_stub"].UpdateAccessApprovalSettings
 
     @property
     def delete_access_approval_settings(self):
@@ -225,4 +221,4 @@ class AccessApprovalGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['access_approval_stub'].DeleteAccessApprovalSettings
+        return self._stubs["access_approval_stub"].DeleteAccessApprovalSettings
