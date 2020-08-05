@@ -1294,6 +1294,7 @@ AccessLocations = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _ACCESSLOCATIONS,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Home office and physical location of the principal.
+  
   Attributes:
       principal_office_country:
           The "home office" location of the principal. A two-letter
@@ -1357,6 +1358,7 @@ ApproveDecision = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _APPROVEDECISION,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """A decision that has been made to approve access to a resource.
+  
   Attributes:
       approve_time:
           The time at which approval was granted.
@@ -1375,6 +1377,7 @@ DismissDecision = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _DISMISSDECISION,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """A decision that has been made to dismiss an approval request.
+  
   Attributes:
       dismiss_time:
           The time at which the approval request was dismissed.
@@ -1391,6 +1394,7 @@ ResourceProperties = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _RESOURCEPROPERTIES,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """The properties associated with the resource of the request.
+  
   Attributes:
       excludes_descendants:
           Whether an approval will exclude the descendants of the
@@ -1408,6 +1412,7 @@ ApprovalRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _APPROVALREQUEST,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """A request for the customer to approve access to a resource.
+  
   Attributes:
       name:
           The resource name of the request. Format is "``{projects|folders
@@ -1454,6 +1459,7 @@ EnrolledService = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _ENROLLEDSERVICE,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Represents the enrollment of a cloud resource into a specific service.
+  
   Attributes:
       cloud_product:
           The product for which Access Approval will be enrolled.
@@ -1486,6 +1492,7 @@ AccessApprovalSettings = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _ACCESSAPPROVALSETTINGS,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Settings on a Project/Folder/Organization related to Access Approval.
+  
   Attributes:
       name:
           The resource name of the settings. Format is one of:  .. raw::
@@ -1534,6 +1541,7 @@ ListApprovalRequestsMessage = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTAPPROVALREQUESTSMESSAGE,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Request to list approval requests.
+  
   Attributes:
       parent:
           The parent resource. This may be "projects/{project_id}",
@@ -1565,6 +1573,7 @@ ListApprovalRequestsResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTAPPROVALREQUESTSRESPONSE,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Response to listing of ApprovalRequest objects.
+  
   Attributes:
       approval_requests:
           Approval request details.
@@ -1584,6 +1593,7 @@ GetApprovalRequestMessage = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GETAPPROVALREQUESTMESSAGE,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Request to get an approval request.
+  
   Attributes:
       name:
           Name of the approval request to retrieve.
@@ -1600,6 +1610,7 @@ ApproveApprovalRequestMessage = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _APPROVEAPPROVALREQUESTMESSAGE,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Request to approve an ApprovalRequest.
+  
   Attributes:
       name:
           Name of the approval request to approve.
@@ -1618,6 +1629,7 @@ DismissApprovalRequestMessage = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _DISMISSAPPROVALREQUESTMESSAGE,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Request to dismiss an approval request.
+  
   Attributes:
       name:
           Name of the ApprovalRequest to dismiss.
@@ -1634,6 +1646,7 @@ GetAccessApprovalSettingsMessage = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GETACCESSAPPROVALSETTINGSMESSAGE,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Request to get access approval settings.
+  
   Attributes:
       name:
           Name of the AccessApprovalSettings to retrieve.
@@ -1650,6 +1663,7 @@ UpdateAccessApprovalSettingsMessage = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _UPDATEACCESSAPPROVALSETTINGSMESSAGE,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Request to update access approval settings.
+  
   Attributes:
       settings:
           The new AccessApprovalSettings.
@@ -1677,6 +1691,7 @@ DeleteAccessApprovalSettingsMessage = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _DELETEACCESSAPPROVALSETTINGSMESSAGE,
         "__module__": "google.cloud.accessapproval_v1.proto.accessapproval_pb2",
         "__doc__": """Request to delete access approval settings.
+  
   Attributes:
       name:
           Name of the AccessApprovalSettings to delete.
