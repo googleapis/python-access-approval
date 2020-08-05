@@ -66,16 +66,15 @@ class AccessLocations(proto.Message):
             refer to a region code instead of a country
             code.
             Possible Region Codes:
-            <ol>
-              <li>ASI: Asia</li>
-              <li>EUR: Europe</li>
-              <li>OCE: Oceania</li>
-              <li>AFR: Africa</li>
-              <li>NAM: North America</li>
-              <li>SAM: South America</li>
-              <li>ANT: Antarctica</li>
-              <li>ANY: Any location</li>
-            </ol>
+
+            - ASI: Asia
+            - EUR: Europe
+            - OCE: Oceania
+            - AFR: Africa
+            - NAM: North America
+            - SAM: South America
+            - ANT: Antarctica
+            - ANY: Any location
         principal_physical_location_country (str):
             Physical location of the principal at the
             time of the access. A two-letter country code
@@ -84,16 +83,15 @@ class AccessLocations(proto.Message):
             Google systems may refer refer to a region code
             instead of a country code.
             Possible Region Codes:
-            <ol>
-              <li>ASI: Asia</li>
-              <li>EUR: Europe</li>
-              <li>OCE: Oceania</li>
-              <li>AFR: Africa</li>
-              <li>NAM: North America</li>
-              <li>SAM: South America</li>
-              <li>ANT: Antarctica</li>
-              <li>ANY: Any location</li>
-            </ol>
+
+            - ASI: Asia
+            - EUR: Europe
+            - OCE: Oceania
+            - AFR: Africa
+            - NAM: North America
+            - SAM: South America
+            - ANT: Antarctica
+            - ANY: Any location
     """
 
     principal_office_country = proto.Field(proto.STRING, number=1)
@@ -237,18 +235,17 @@ class EnrolledService(proto.Message):
         cloud_product (str):
             The product for which Access Approval will be
             enrolled. Allowed values are listed below (case-
-            sensitive): <ol>
-              <li>all</li>
-              <li>appengine.googleapis.com</li>
-              <li>bigquery.googleapis.com</li>
-              <li>bigtable.googleapis.com</li>
-              <li>cloudkms.googleapis.com</li>
-              <li>compute.googleapis.com</li>
-              <li>dataflow.googleapis.com</li>
-              <li>iam.googleapis.com</li>
-              <li>pubsub.googleapis.com</li>
-              <li>storage.googleapis.com</li>
-            <ol>
+            sensitive):
+            - all
+            - appengine.googleapis.com
+            - bigquery.googleapis.com
+            - bigtable.googleapis.com
+            - cloudkms.googleapis.com
+            - compute.googleapis.com
+            - dataflow.googleapis.com
+            - iam.googleapis.com
+            - pubsub.googleapis.com
+            - storage.googleapis.com
         enrollment_level (~.accessapproval.EnrollmentLevel):
             The enrollment level of the service.
     """
@@ -266,13 +263,9 @@ class AccessApprovalSettings(proto.Message):
         name (str):
             The resource name of the settings. Format is one of:
 
-            .. raw:: html
-
-                <ol>
-                  <li>"projects/{project_id}/accessApprovalSettings"</li>
-                  <li>"folders/{folder_id}/accessApprovalSettings"</li>
-                  <li>"organizations/{organization_id}/accessApprovalSettings"</li>
-                <ol>
+            -  "projects/{project_id}/accessApprovalSettings"
+            -  "folders/{folder_id}/accessApprovalSettings"
+            -  "organizations/{organization_id}/accessApprovalSettings".
         notification_emails (Sequence[str]):
             A list of email addresses to which
             notifications relating to approval requests
@@ -327,15 +320,12 @@ class ListApprovalRequestsMessage(proto.Message):
             A filter on the type of approval requests to retrieve. Must
             be one of the following values:
 
-            .. raw:: html
-
-                <ol>
-                  <li>[not set]: Requests that are pending or have active approvals.</li>
-                  <li>ALL: All requests.</li>
-                  <li>PENDING: Only pending requests.</li>
-                  <li>ACTIVE: Only active (i.e. currently approved) requests.</li>
-                  <li>DISMISSED: Only dismissed (including expired) requests.</li>
-                </ol>
+            -  [not set]: Requests that are pending or have active
+               approvals.
+            -  ALL: All requests.
+            -  PENDING: Only pending requests.
+            -  ACTIVE: Only active (i.e. currently approved) requests.
+            -  DISMISSED: Only dismissed (including expired) requests.
         page_size (int):
             Requested page size.
         page_token (str):
