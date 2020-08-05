@@ -246,7 +246,7 @@ _ACCESSREASON = _descriptor.Descriptor(
     ],
     extensions=[],
     nested_types=[],
-    enum_types=[_ACCESSREASON_TYPE],
+    enum_types=[_ACCESSREASON_TYPE,],
     serialized_options=None,
     is_extendable=False,
     syntax="proto3",
@@ -343,7 +343,7 @@ _DISMISSDECISION = _descriptor.Descriptor(
             serialized_options=None,
             file=DESCRIPTOR,
             create_key=_descriptor._internal_create_key,
-        )
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -384,7 +384,7 @@ _RESOURCEPROPERTIES = _descriptor.Descriptor(
             serialized_options=None,
             file=DESCRIPTOR,
             create_key=_descriptor._internal_create_key,
-        )
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -594,7 +594,7 @@ _APPROVALREQUEST = _descriptor.Descriptor(
             containing_type=None,
             create_key=_descriptor._internal_create_key,
             fields=[],
-        )
+        ),
     ],
     serialized_start=834,
     serialized_end=1395,
@@ -943,7 +943,7 @@ _GETAPPROVALREQUESTMESSAGE = _descriptor.Descriptor(
             serialized_options=None,
             file=DESCRIPTOR,
             create_key=_descriptor._internal_create_key,
-        )
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -1044,7 +1044,7 @@ _DISMISSAPPROVALREQUESTMESSAGE = _descriptor.Descriptor(
             serialized_options=None,
             file=DESCRIPTOR,
             create_key=_descriptor._internal_create_key,
-        )
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -1085,7 +1085,7 @@ _GETACCESSAPPROVALSETTINGSMESSAGE = _descriptor.Descriptor(
             serialized_options=None,
             file=DESCRIPTOR,
             create_key=_descriptor._internal_create_key,
-        )
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -1186,7 +1186,7 @@ _DELETEACCESSAPPROVALSETTINGSMESSAGE = _descriptor.Descriptor(
             serialized_options=None,
             file=DESCRIPTOR,
             create_key=_descriptor._internal_create_key,
-        )
+        ),
     ],
     extensions=[],
     nested_types=[],

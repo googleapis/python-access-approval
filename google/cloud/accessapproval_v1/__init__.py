@@ -38,4 +38,8 @@ class AccessApprovalClient(access_approval_client.AccessApprovalClient):
     enums = enums
 
 
-__all__ = ("enums", "types", "AccessApprovalClient")
+__all__ = (
+    "enums",
+    "types",
+    "AccessApprovalClient",
+)

@@ -22,4 +22,8 @@ from google.cloud.accessapproval_v1 import enums
 from google.cloud.accessapproval_v1 import types
 
 
-__all__ = ("enums", "types", "AccessApprovalClient")
+__all__ = (
+    "enums",
+    "types",
+    "AccessApprovalClient",
+)
