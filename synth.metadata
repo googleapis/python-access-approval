@@ -3,30 +3,30 @@
     {
       "git": {
         "name": ".",
-        "remote": "https://github.com/googleapis/python-access-approval.git",
-        "sha": "e82cc4a635044b6891604a8d641e5a6b6f437e69"
+        "remote": "git@github.com:googleapis/python-access-approval",
+        "sha": "7fcae2b8e23e9a64016ad758a9e14a78ed02374e"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "43a62a87b70010d9cf9be31e99ea230a535e1b47",
-        "internalRef": "326109811"
+        "sha": "6a69c750c3f01a69017662395f90515bbf1fe1ff",
+        "internalRef": "342721036"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "4f8f5dc24af79694887385015294e4dbb214c352"
+        "sha": "d5fc0bcf9ea9789c5b0e3154a9e3b29e5cea6116"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "4f8f5dc24af79694887385015294e4dbb214c352"
+        "sha": "d5fc0bcf9ea9789c5b0e3154a9e3b29e5cea6116"
       }
     }
   ],
@@ -40,91 +40,5 @@
         "generator": "bazel"
       }
     }
-  ],
-  "generatedFiles": [
-    ".flake8",
-    ".github/CONTRIBUTING.md",
-    ".github/ISSUE_TEMPLATE/bug_report.md",
-    ".github/ISSUE_TEMPLATE/feature_request.md",
-    ".github/ISSUE_TEMPLATE/support_request.md",
-    ".github/PULL_REQUEST_TEMPLATE.md",
-    ".github/release-please.yml",
-    ".gitignore",
-    ".kokoro/build.sh",
-    ".kokoro/continuous/common.cfg",
-    ".kokoro/continuous/continuous.cfg",
-    ".kokoro/docker/docs/Dockerfile",
-    ".kokoro/docker/docs/fetch_gpg_keys.sh",
-    ".kokoro/docs/common.cfg",
-    ".kokoro/docs/docs-presubmit.cfg",
-    ".kokoro/docs/docs.cfg",
-    ".kokoro/presubmit/common.cfg",
-    ".kokoro/presubmit/presubmit.cfg",
-    ".kokoro/publish-docs.sh",
-    ".kokoro/release.sh",
-    ".kokoro/release/common.cfg",
-    ".kokoro/release/release.cfg",
-    ".kokoro/samples/lint/common.cfg",
-    ".kokoro/samples/lint/continuous.cfg",
-    ".kokoro/samples/lint/periodic.cfg",
-    ".kokoro/samples/lint/presubmit.cfg",
-    ".kokoro/samples/python3.6/common.cfg",
-    ".kokoro/samples/python3.6/continuous.cfg",
-    ".kokoro/samples/python3.6/periodic.cfg",
-    ".kokoro/samples/python3.6/presubmit.cfg",
-    ".kokoro/samples/python3.7/common.cfg",
-    ".kokoro/samples/python3.7/continuous.cfg",
-    ".kokoro/samples/python3.7/periodic.cfg",
-    ".kokoro/samples/python3.7/presubmit.cfg",
-    ".kokoro/samples/python3.8/common.cfg",
-    ".kokoro/samples/python3.8/continuous.cfg",
-    ".kokoro/samples/python3.8/periodic.cfg",
-    ".kokoro/samples/python3.8/presubmit.cfg",
-    ".kokoro/test-samples.sh",
-    ".kokoro/trampoline.sh",
-    ".kokoro/trampoline_v2.sh",
-    ".trampolinerc",
-    "CODE_OF_CONDUCT.md",
-    "CONTRIBUTING.rst",
-    "LICENSE",
-    "MANIFEST.in",
-    "docs/_static/custom.css",
-    "docs/_templates/layout.html",
-    "docs/accessapproval_v1/services.rst",
-    "docs/accessapproval_v1/types.rst",
-    "docs/conf.py",
-    "docs/multiprocessing.rst",
-    "google/cloud/accessapproval/__init__.py",
-    "google/cloud/accessapproval/py.typed",
-    "google/cloud/accessapproval_v1/__init__.py",
-    "google/cloud/accessapproval_v1/py.typed",
-    "google/cloud/accessapproval_v1/services/__init__.py",
-    "google/cloud/accessapproval_v1/services/access_approval/__init__.py",
-    "google/cloud/accessapproval_v1/services/access_approval/async_client.py",
-    "google/cloud/accessapproval_v1/services/access_approval/client.py",
-    "google/cloud/accessapproval_v1/services/access_approval/pagers.py",
-    "google/cloud/accessapproval_v1/services/access_approval/transports/__init__.py",
-    "google/cloud/accessapproval_v1/services/access_approval/transports/base.py",
-    "google/cloud/accessapproval_v1/services/access_approval/transports/grpc.py",
-    "google/cloud/accessapproval_v1/services/access_approval/transports/grpc_asyncio.py",
-    "google/cloud/accessapproval_v1/types/__init__.py",
-    "google/cloud/accessapproval_v1/types/accessapproval.py",
-    "mypy.ini",
-    "noxfile.py",
-    "renovate.json",
-    "samples/AUTHORING_GUIDE.md",
-    "samples/CONTRIBUTING.md",
-    "scripts/decrypt-secrets.sh",
-    "scripts/fixup_accessapproval_v1_keywords.py",
-    "scripts/readme-gen/readme_gen.py",
-    "scripts/readme-gen/templates/README.tmpl.rst",
-    "scripts/readme-gen/templates/auth.tmpl.rst",
-    "scripts/readme-gen/templates/auth_api_key.tmpl.rst",
-    "scripts/readme-gen/templates/install_deps.tmpl.rst",
-    "scripts/readme-gen/templates/install_portaudio.tmpl.rst",
-    "setup.cfg",
-    "testing/.gitignore",
-    "tests/unit/gapic/accessapproval_v1/__init__.py",
-    "tests/unit/gapic/accessapproval_v1/test_access_approval.py"
   ]
 }
