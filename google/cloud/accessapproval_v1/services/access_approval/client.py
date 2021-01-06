@@ -148,6 +148,22 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
     )
 
     @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            AccessApprovalClient: The constructed client.
+        """
+        credentials = service_account.Credentials.from_service_account_info(info)
+        kwargs["credentials"] = credentials
+        return cls(*args, **kwargs)
+
+    @classmethod
     def from_service_account_file(cls, filename: str, *args, **kwargs):
         """Creates an instance of this client using the provided credentials
         file.
@@ -159,7 +175,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
             kwargs: Additional arguments to pass to the constructor.
 
         Returns:
-            {@api.name}: The constructed client.
+            AccessApprovalClient: The constructed client.
         """
         credentials = service_account.Credentials.from_service_account_file(filename)
         kwargs["credentials"] = credentials
@@ -251,10 +267,10 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 credentials identify the application to the service; if none
                 are specified, the client will attempt to ascertain the
                 credentials from the environment.
-            transport (Union[str, ~.AccessApprovalTransport]): The
+            transport (Union[str, AccessApprovalTransport]): The
                 transport to use. If set to None, a transport is chosen
                 automatically.
-            client_options (client_options_lib.ClientOptions): Custom options for the
+            client_options (google.api_core.client_options.ClientOptions): Custom options for the
                 client. It won't take effect if a ``transport`` instance is provided.
                 (1) The ``api_endpoint`` property can be used to override the
                 default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
@@ -367,12 +383,13 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         order is reverse chronological.
 
         Args:
-            request (:class:`~.accessapproval.ListApprovalRequestsMessage`):
+            request (google.cloud.accessapproval_v1.types.ListApprovalRequestsMessage):
                 The request object. Request to list approval requests.
-            parent (:class:`str`):
+            parent (str):
                 The parent resource. This may be
                 "projects/{project_id}", "folders/{folder_id}", or
                 "organizations/{organization_id}".
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -384,7 +401,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListApprovalRequestsPager:
+            google.cloud.accessapproval_v1.services.access_approval.pagers.ListApprovalRequestsPager:
                 Response to listing of
                 ApprovalRequest objects.
                 Iterating over this object will yield
@@ -450,11 +467,12 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         not exist.
 
         Args:
-            request (:class:`~.accessapproval.GetApprovalRequestMessage`):
+            request (google.cloud.accessapproval_v1.types.GetApprovalRequestMessage):
                 The request object. Request to get an approval request.
-            name (:class:`str`):
+            name (str):
                 Name of the approval request to
                 retrieve.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -466,7 +484,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.accessapproval.ApprovalRequest:
+            google.cloud.accessapproval_v1.types.ApprovalRequest:
                 A request for the customer to approve
                 access to a resource.
 
@@ -525,7 +543,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         pending state.
 
         Args:
-            request (:class:`~.accessapproval.ApproveApprovalRequestMessage`):
+            request (google.cloud.accessapproval_v1.types.ApproveApprovalRequestMessage):
                 The request object. Request to approve an
                 ApprovalRequest.
 
@@ -536,7 +554,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.accessapproval.ApprovalRequest:
+            google.cloud.accessapproval_v1.types.ApprovalRequest:
                 A request for the customer to approve
                 access to a resource.
 
@@ -586,7 +604,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         a pending state.
 
         Args:
-            request (:class:`~.accessapproval.DismissApprovalRequestMessage`):
+            request (google.cloud.accessapproval_v1.types.DismissApprovalRequestMessage):
                 The request object. Request to dismiss an approval
                 request.
 
@@ -597,7 +615,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.accessapproval.ApprovalRequest:
+            google.cloud.accessapproval_v1.types.ApprovalRequest:
                 A request for the customer to approve
                 access to a resource.
 
@@ -640,12 +658,13 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         or organization.
 
         Args:
-            request (:class:`~.accessapproval.GetAccessApprovalSettingsMessage`):
+            request (google.cloud.accessapproval_v1.types.GetAccessApprovalSettingsMessage):
                 The request object. Request to get access approval
                 settings.
-            name (:class:`str`):
+            name (str):
                 Name of the AccessApprovalSettings to
                 retrieve.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -657,7 +676,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.accessapproval.AccessApprovalSettings:
+            google.cloud.accessapproval_v1.types.AccessApprovalSettings:
                 Settings on a
                 Project/Folder/Organization related to
                 Access Approval.
@@ -719,15 +738,15 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         field_mask.
 
         Args:
-            request (:class:`~.accessapproval.UpdateAccessApprovalSettingsMessage`):
+            request (google.cloud.accessapproval_v1.types.UpdateAccessApprovalSettingsMessage):
                 The request object. Request to update access approval
                 settings.
-            settings (:class:`~.accessapproval.AccessApprovalSettings`):
+            settings (google.cloud.accessapproval_v1.types.AccessApprovalSettings):
                 The new AccessApprovalSettings.
                 This corresponds to the ``settings`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (google.protobuf.field_mask_pb2.FieldMask):
                 The update mask applies to the settings. Only the top
                 level fields of AccessApprovalSettings
                 (notification_emails & enrolled_services) are supported.
@@ -739,6 +758,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                 If this field is left unset, only the
                 notification_emails field will be updated.
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -750,7 +770,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            ~.accessapproval.AccessApprovalSettings:
+            google.cloud.accessapproval_v1.types.AccessApprovalSettings:
                 Settings on a
                 Project/Folder/Organization related to
                 Access Approval.
@@ -820,12 +840,13 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         inherited.
 
         Args:
-            request (:class:`~.accessapproval.DeleteAccessApprovalSettingsMessage`):
+            request (google.cloud.accessapproval_v1.types.DeleteAccessApprovalSettingsMessage):
                 The request object. Request to delete access approval
                 settings.
-            name (:class:`str`):
+            name (str):
                 Name of the AccessApprovalSettings to
                 delete.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
