@@ -4,15 +4,15 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-access-approval.git",
-        "sha": "98610b41f9e70f7e1624709ad2e83c90db86cb97"
+        "sha": "0ac6340dec0ac87b42ddf13af5799573f9b4f1c1"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "dd372aa22ded7a8ba6f0e03a80e06358a3fa0907",
-        "internalRef": "347055288"
+        "sha": "20712b8fe95001b312f62c6c5f33e3e3ec92cfaf",
+        "internalRef": "354996675"
       }
     },
     {
@@ -42,6 +42,7 @@
     }
   ],
   "generatedFiles": [
+    ".coveragerc",
     ".flake8",
     ".github/CONTRIBUTING.md",
     ".github/ISSUE_TEMPLATE/bug_report.md",
@@ -91,9 +92,9 @@
     "CONTRIBUTING.rst",
     "LICENSE",
     "MANIFEST.in",
-    "accessapproval-v1-py.tar.gz",
     "docs/_static/custom.css",
     "docs/_templates/layout.html",
+    "docs/accessapproval_v1/access_approval.rst",
     "docs/accessapproval_v1/services.rst",
     "docs/accessapproval_v1/types.rst",
     "docs/conf.py",

@@ -110,6 +110,7 @@ class AccessApprovalAsyncClient:
         AccessApprovalClient.parse_common_location_path
     )
 
+    from_service_account_info = AccessApprovalClient.from_service_account_info
     from_service_account_file = AccessApprovalClient.from_service_account_file
     from_service_account_json = from_service_account_file
 
@@ -189,12 +190,13 @@ class AccessApprovalAsyncClient:
         order is reverse chronological.
 
         Args:
-            request (:class:`~.accessapproval.ListApprovalRequestsMessage`):
+            request (:class:`google.cloud.accessapproval_v1.types.ListApprovalRequestsMessage`):
                 The request object. Request to list approval requests.
             parent (:class:`str`):
                 The parent resource. This may be
                 "projects/{project_id}", "folders/{folder_id}", or
                 "organizations/{organization_id}".
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -206,7 +208,7 @@ class AccessApprovalAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListApprovalRequestsAsyncPager:
+            google.cloud.accessapproval_v1.services.access_approval.pagers.ListApprovalRequestsAsyncPager:
                 Response to listing of
                 ApprovalRequest objects.
                 Iterating over this object will yield
@@ -277,11 +279,12 @@ class AccessApprovalAsyncClient:
         not exist.
 
         Args:
-            request (:class:`~.accessapproval.GetApprovalRequestMessage`):
+            request (:class:`google.cloud.accessapproval_v1.types.GetApprovalRequestMessage`):
                 The request object. Request to get an approval request.
             name (:class:`str`):
                 Name of the approval request to
                 retrieve.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -293,7 +296,7 @@ class AccessApprovalAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.accessapproval.ApprovalRequest:
+            google.cloud.accessapproval_v1.types.ApprovalRequest:
                 A request for the customer to approve
                 access to a resource.
 
@@ -357,7 +360,7 @@ class AccessApprovalAsyncClient:
         pending state.
 
         Args:
-            request (:class:`~.accessapproval.ApproveApprovalRequestMessage`):
+            request (:class:`google.cloud.accessapproval_v1.types.ApproveApprovalRequestMessage`):
                 The request object. Request to approve an
                 ApprovalRequest.
 
@@ -368,7 +371,7 @@ class AccessApprovalAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.accessapproval.ApprovalRequest:
+            google.cloud.accessapproval_v1.types.ApprovalRequest:
                 A request for the customer to approve
                 access to a resource.
 
@@ -417,7 +420,7 @@ class AccessApprovalAsyncClient:
         a pending state.
 
         Args:
-            request (:class:`~.accessapproval.DismissApprovalRequestMessage`):
+            request (:class:`google.cloud.accessapproval_v1.types.DismissApprovalRequestMessage`):
                 The request object. Request to dismiss an approval
                 request.
 
@@ -428,7 +431,7 @@ class AccessApprovalAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.accessapproval.ApprovalRequest:
+            google.cloud.accessapproval_v1.types.ApprovalRequest:
                 A request for the customer to approve
                 access to a resource.
 
@@ -470,12 +473,13 @@ class AccessApprovalAsyncClient:
         or organization.
 
         Args:
-            request (:class:`~.accessapproval.GetAccessApprovalSettingsMessage`):
+            request (:class:`google.cloud.accessapproval_v1.types.GetAccessApprovalSettingsMessage`):
                 The request object. Request to get access approval
                 settings.
             name (:class:`str`):
                 Name of the AccessApprovalSettings to
                 retrieve.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -487,7 +491,7 @@ class AccessApprovalAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.accessapproval.AccessApprovalSettings:
+            google.cloud.accessapproval_v1.types.AccessApprovalSettings:
                 Settings on a
                 Project/Folder/Organization related to
                 Access Approval.
@@ -552,15 +556,15 @@ class AccessApprovalAsyncClient:
         field_mask.
 
         Args:
-            request (:class:`~.accessapproval.UpdateAccessApprovalSettingsMessage`):
+            request (:class:`google.cloud.accessapproval_v1.types.UpdateAccessApprovalSettingsMessage`):
                 The request object. Request to update access approval
                 settings.
-            settings (:class:`~.accessapproval.AccessApprovalSettings`):
+            settings (:class:`google.cloud.accessapproval_v1.types.AccessApprovalSettings`):
                 The new AccessApprovalSettings.
                 This corresponds to the ``settings`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
                 The update mask applies to the settings. Only the top
                 level fields of AccessApprovalSettings
                 (notification_emails & enrolled_services) are supported.
@@ -572,6 +576,7 @@ class AccessApprovalAsyncClient:
                 https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                 If this field is left unset, only the
                 notification_emails field will be updated.
+
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -583,7 +588,7 @@ class AccessApprovalAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.accessapproval.AccessApprovalSettings:
+            google.cloud.accessapproval_v1.types.AccessApprovalSettings:
                 Settings on a
                 Project/Folder/Organization related to
                 Access Approval.
@@ -650,12 +655,13 @@ class AccessApprovalAsyncClient:
         inherited.
 
         Args:
-            request (:class:`~.accessapproval.DeleteAccessApprovalSettingsMessage`):
+            request (:class:`google.cloud.accessapproval_v1.types.DeleteAccessApprovalSettingsMessage`):
                 The request object. Request to delete access approval
                 settings.
             name (:class:`str`):
                 Name of the AccessApprovalSettings to
                 delete.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
