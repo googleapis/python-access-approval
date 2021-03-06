@@ -88,15 +88,19 @@ def test__get_default_mtls_endpoint():
     )
 
 
-def test_access_approval_client_from_service_account_info():
+@pytest.mark.parametrize(
+    "client_class", [AccessApprovalClient, AccessApprovalAsyncClient,]
+)
+def test_access_approval_client_from_service_account_info(client_class):
     creds = credentials.AnonymousCredentials()
     with mock.patch.object(
         service_account.Credentials, "from_service_account_info"
     ) as factory:
         factory.return_value = creds
         info = {"valid": True}
-        client = AccessApprovalClient.from_service_account_info(info)
+        client = client_class.from_service_account_info(info)
         assert client.transport._credentials == creds
+        assert isinstance(client, client_class)
 
         assert client.transport._host == "accessapproval.googleapis.com:443"
 
@@ -112,9 +116,11 @@ def test_access_approval_client_from_service_account_file(client_class):
         factory.return_value = creds
         client = client_class.from_service_account_file("dummy/file/path.json")
         assert client.transport._credentials == creds
+        assert isinstance(client, client_class)
 
         client = client_class.from_service_account_json("dummy/file/path.json")
         assert client.transport._credentials == creds
+        assert isinstance(client, client_class)
 
         assert client.transport._host == "accessapproval.googleapis.com:443"
 
@@ -477,6 +483,24 @@ def test_list_approval_requests(
 
 def test_list_approval_requests_from_dict():
     test_list_approval_requests(request_type=dict)
+
+
+def test_list_approval_requests_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = AccessApprovalClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.list_approval_requests), "__call__"
+    ) as call:
+        client.list_approval_requests()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == accessapproval.ListApprovalRequestsMessage()
 
 
 @pytest.mark.asyncio
@@ -863,6 +887,24 @@ def test_get_approval_request_from_dict():
     test_get_approval_request(request_type=dict)
 
 
+def test_get_approval_request_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = AccessApprovalClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.get_approval_request), "__call__"
+    ) as call:
+        client.get_approval_request()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == accessapproval.GetApprovalRequestMessage()
+
+
 @pytest.mark.asyncio
 async def test_get_approval_request_async(
     transport: str = "grpc_asyncio",
@@ -1080,6 +1122,24 @@ def test_approve_approval_request_from_dict():
     test_approve_approval_request(request_type=dict)
 
 
+def test_approve_approval_request_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = AccessApprovalClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.approve_approval_request), "__call__"
+    ) as call:
+        client.approve_approval_request()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == accessapproval.ApproveApprovalRequestMessage()
+
+
 @pytest.mark.asyncio
 async def test_approve_approval_request_async(
     transport: str = "grpc_asyncio",
@@ -1224,6 +1284,24 @@ def test_dismiss_approval_request(
 
 def test_dismiss_approval_request_from_dict():
     test_dismiss_approval_request(request_type=dict)
+
+
+def test_dismiss_approval_request_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = AccessApprovalClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.dismiss_approval_request), "__call__"
+    ) as call:
+        client.dismiss_approval_request()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == accessapproval.DismissApprovalRequestMessage()
 
 
 @pytest.mark.asyncio
@@ -1371,6 +1449,24 @@ def test_get_access_approval_settings(
 
 def test_get_access_approval_settings_from_dict():
     test_get_access_approval_settings(request_type=dict)
+
+
+def test_get_access_approval_settings_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = AccessApprovalClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.get_access_approval_settings), "__call__"
+    ) as call:
+        client.get_access_approval_settings()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == accessapproval.GetAccessApprovalSettingsMessage()
 
 
 @pytest.mark.asyncio
@@ -1592,6 +1688,24 @@ def test_update_access_approval_settings(
 
 def test_update_access_approval_settings_from_dict():
     test_update_access_approval_settings(request_type=dict)
+
+
+def test_update_access_approval_settings_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = AccessApprovalClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.update_access_approval_settings), "__call__"
+    ) as call:
+        client.update_access_approval_settings()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == accessapproval.UpdateAccessApprovalSettingsMessage()
 
 
 @pytest.mark.asyncio
@@ -1824,6 +1938,24 @@ def test_delete_access_approval_settings(
 
 def test_delete_access_approval_settings_from_dict():
     test_delete_access_approval_settings(request_type=dict)
+
+
+def test_delete_access_approval_settings_empty_call():
+    # This test is a coverage failsafe to make sure that totally empty calls,
+    # i.e. request == None and no flattened fields passed, work.
+    client = AccessApprovalClient(
+        credentials=credentials.AnonymousCredentials(), transport="grpc",
+    )
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.delete_access_approval_settings), "__call__"
+    ) as call:
+        client.delete_access_approval_settings()
+        call.assert_called()
+        _, args, _ = call.mock_calls[0]
+
+        assert args[0] == accessapproval.DeleteAccessApprovalSettingsMessage()
 
 
 @pytest.mark.asyncio
