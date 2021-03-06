@@ -24,7 +24,7 @@ class ListApprovalRequestsPager:
     """A pager for iterating through ``list_approval_requests`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.accessapproval_v1.types.ListApprovalRequestsResponse` object, and
+    :class:`~.accessapproval.ListApprovalRequestsResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``approval_requests`` field.
 
@@ -33,7 +33,7 @@ class ListApprovalRequestsPager:
     through the ``approval_requests`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.accessapproval_v1.types.ListApprovalRequestsResponse`
+    All the usual :class:`~.accessapproval.ListApprovalRequestsResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -51,9 +51,9 @@ class ListApprovalRequestsPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.accessapproval_v1.types.ListApprovalRequestsMessage):
+            request (:class:`~.accessapproval.ListApprovalRequestsMessage`):
                 The initial request object.
-            response (google.cloud.accessapproval_v1.types.ListApprovalRequestsResponse):
+            response (:class:`~.accessapproval.ListApprovalRequestsResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -86,7 +86,7 @@ class ListApprovalRequestsAsyncPager:
     """A pager for iterating through ``list_approval_requests`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.accessapproval_v1.types.ListApprovalRequestsResponse` object, and
+    :class:`~.accessapproval.ListApprovalRequestsResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``approval_requests`` field.
 
@@ -95,7 +95,7 @@ class ListApprovalRequestsAsyncPager:
     through the ``approval_requests`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.accessapproval_v1.types.ListApprovalRequestsResponse`
+    All the usual :class:`~.accessapproval.ListApprovalRequestsResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -113,9 +113,9 @@ class ListApprovalRequestsAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.accessapproval_v1.types.ListApprovalRequestsMessage):
+            request (:class:`~.accessapproval.ListApprovalRequestsMessage`):
                 The initial request object.
-            response (google.cloud.accessapproval_v1.types.ListApprovalRequestsResponse):
+            response (:class:`~.accessapproval.ListApprovalRequestsResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
