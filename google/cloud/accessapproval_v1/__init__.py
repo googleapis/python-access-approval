@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +15,7 @@
 #
 
 from .services.access_approval import AccessApprovalClient
+
 from .types.accessapproval import AccessApprovalSettings
 from .types.accessapproval import AccessLocations
 from .types.accessapproval import AccessReason
@@ -33,7 +33,6 @@ from .types.accessapproval import ListApprovalRequestsMessage
 from .types.accessapproval import ListApprovalRequestsResponse
 from .types.accessapproval import ResourceProperties
 from .types.accessapproval import UpdateAccessApprovalSettingsMessage
-
 
 __all__ = (
     "AccessApprovalSettings",

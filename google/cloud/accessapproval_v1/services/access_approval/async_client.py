@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 import functools
 import re
@@ -32,7 +30,6 @@ from google.cloud.accessapproval_v1.services.access_approval import pagers
 from google.cloud.accessapproval_v1.types import accessapproval
 from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
-
 from .transports.base import AccessApprovalTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import AccessApprovalGrpcAsyncIOTransport
 from .client import AccessApprovalClient
@@ -87,24 +84,20 @@ class AccessApprovalAsyncClient:
     parse_common_billing_account_path = staticmethod(
         AccessApprovalClient.parse_common_billing_account_path
     )
-
     common_folder_path = staticmethod(AccessApprovalClient.common_folder_path)
     parse_common_folder_path = staticmethod(
         AccessApprovalClient.parse_common_folder_path
     )
-
     common_organization_path = staticmethod(
         AccessApprovalClient.common_organization_path
     )
     parse_common_organization_path = staticmethod(
         AccessApprovalClient.parse_common_organization_path
     )
-
     common_project_path = staticmethod(AccessApprovalClient.common_project_path)
     parse_common_project_path = staticmethod(
         AccessApprovalClient.parse_common_project_path
     )
-
     common_location_path = staticmethod(AccessApprovalClient.common_location_path)
     parse_common_location_path = staticmethod(
         AccessApprovalClient.parse_common_location_path
@@ -195,7 +188,6 @@ class AccessApprovalAsyncClient:
             google.auth.exceptions.MutualTlsChannelError: If mutual TLS transport
                 creation failed for any reason.
         """
-
         self._client = AccessApprovalClient(
             credentials=credentials,
             transport=transport,
@@ -219,7 +211,8 @@ class AccessApprovalAsyncClient:
 
         Args:
             request (:class:`google.cloud.accessapproval_v1.types.ListApprovalRequestsMessage`):
-                The request object. Request to list approval requests.
+                The request object.
+                Request to list approval requests.
             parent (:class:`str`):
                 The parent resource. This may be
                 "projects/{project_id}", "folders/{folder_id}", or
@@ -228,7 +221,6 @@ class AccessApprovalAsyncClient:
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -258,7 +250,6 @@ class AccessApprovalAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
 
@@ -309,7 +300,8 @@ class AccessApprovalAsyncClient:
 
         Args:
             request (:class:`google.cloud.accessapproval_v1.types.GetApprovalRequestMessage`):
-                The request object. Request to get an approval request.
+                The request object.
+                Request to get an approval request.
             name (:class:`str`):
                 Name of the approval request to
                 retrieve.
@@ -317,7 +309,6 @@ class AccessApprovalAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -344,7 +335,6 @@ class AccessApprovalAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -391,9 +381,9 @@ class AccessApprovalAsyncClient:
 
         Args:
             request (:class:`google.cloud.accessapproval_v1.types.ApproveApprovalRequestMessage`):
-                The request object. Request to approve an
+                The request object.
+                Request to approve an
                 ApprovalRequest.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -407,7 +397,6 @@ class AccessApprovalAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-
         request = accessapproval.ApproveApprovalRequestMessage(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
@@ -451,9 +440,9 @@ class AccessApprovalAsyncClient:
 
         Args:
             request (:class:`google.cloud.accessapproval_v1.types.DismissApprovalRequestMessage`):
-                The request object. Request to dismiss an approval
+                The request object.
+                Request to dismiss an approval
                 request.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -467,7 +456,6 @@ class AccessApprovalAsyncClient:
 
         """
         # Create or coerce a protobuf request object.
-
         request = accessapproval.DismissApprovalRequestMessage(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
@@ -504,7 +492,8 @@ class AccessApprovalAsyncClient:
 
         Args:
             request (:class:`google.cloud.accessapproval_v1.types.GetAccessApprovalSettingsMessage`):
-                The request object. Request to get access approval
+                The request object.
+                Request to get access approval
                 settings.
             name (:class:`str`):
                 Name of the AccessApprovalSettings to
@@ -513,7 +502,6 @@ class AccessApprovalAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -541,7 +529,6 @@ class AccessApprovalAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -588,7 +575,8 @@ class AccessApprovalAsyncClient:
 
         Args:
             request (:class:`google.cloud.accessapproval_v1.types.UpdateAccessApprovalSettingsMessage`):
-                The request object. Request to update access approval
+                The request object.
+                Request to update access approval
                 settings.
             settings (:class:`google.cloud.accessapproval_v1.types.AccessApprovalSettings`):
                 The new AccessApprovalSettings.
@@ -611,7 +599,6 @@ class AccessApprovalAsyncClient:
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -639,7 +626,6 @@ class AccessApprovalAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if settings is not None:
             request.settings = settings
         if update_mask is not None:
@@ -687,7 +673,8 @@ class AccessApprovalAsyncClient:
 
         Args:
             request (:class:`google.cloud.accessapproval_v1.types.DeleteAccessApprovalSettingsMessage`):
-                The request object. Request to delete access approval
+                The request object.
+                Request to delete access approval
                 settings.
             name (:class:`str`):
                 Name of the AccessApprovalSettings to
@@ -696,7 +683,6 @@ class AccessApprovalAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -717,7 +703,6 @@ class AccessApprovalAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
