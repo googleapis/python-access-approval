@@ -267,7 +267,9 @@ class AccessApprovalGrpcAsyncIOTransport(AccessApprovalTransport):
         [accessapproval.ListApprovalRequestsMessage],
         Awaitable[accessapproval.ListApprovalRequestsResponse],
     ]:
-        r"""Return a callable for the list approval requests method over gRPC.
+        r"""Return a callable for the
+        list approval requests
+          method over gRPC.
 
         Lists approval requests associated with a project,
         folder, or organization. Approval requests can be
@@ -299,7 +301,9 @@ class AccessApprovalGrpcAsyncIOTransport(AccessApprovalTransport):
         [accessapproval.GetApprovalRequestMessage],
         Awaitable[accessapproval.ApprovalRequest],
     ]:
-        r"""Return a callable for the get approval request method over gRPC.
+        r"""Return a callable for the
+        get approval request
+          method over gRPC.
 
         Gets an approval request. Returns NOT_FOUND if the request does
         not exist.
@@ -329,7 +333,9 @@ class AccessApprovalGrpcAsyncIOTransport(AccessApprovalTransport):
         [accessapproval.ApproveApprovalRequestMessage],
         Awaitable[accessapproval.ApprovalRequest],
     ]:
-        r"""Return a callable for the approve approval request method over gRPC.
+        r"""Return a callable for the
+        approve approval request
+          method over gRPC.
 
         Approves a request and returns the updated ApprovalRequest.
 
@@ -362,7 +368,9 @@ class AccessApprovalGrpcAsyncIOTransport(AccessApprovalTransport):
         [accessapproval.DismissApprovalRequestMessage],
         Awaitable[accessapproval.ApprovalRequest],
     ]:
-        r"""Return a callable for the dismiss approval request method over gRPC.
+        r"""Return a callable for the
+        dismiss approval request
+          method over gRPC.
 
         Dismisses a request. Returns the updated ApprovalRequest.
 
@@ -400,7 +408,9 @@ class AccessApprovalGrpcAsyncIOTransport(AccessApprovalTransport):
         [accessapproval.GetAccessApprovalSettingsMessage],
         Awaitable[accessapproval.AccessApprovalSettings],
     ]:
-        r"""Return a callable for the get access approval settings method over gRPC.
+        r"""Return a callable for the
+        get access approval settings
+          method over gRPC.
 
         Gets the settings associated with a project, folder,
         or organization.
@@ -430,8 +440,10 @@ class AccessApprovalGrpcAsyncIOTransport(AccessApprovalTransport):
         [accessapproval.UpdateAccessApprovalSettingsMessage],
         Awaitable[accessapproval.AccessApprovalSettings],
     ]:
-        r"""Return a callable for the update access approval
-        settings method over gRPC.
+        r"""Return a callable for the
+        update access approval
+        settings
+          method over gRPC.
 
         Updates the settings associated with a project, folder, or
         organization. Settings to update are determined by the value of
@@ -463,8 +475,10 @@ class AccessApprovalGrpcAsyncIOTransport(AccessApprovalTransport):
     ) -> Callable[
         [accessapproval.DeleteAccessApprovalSettingsMessage], Awaitable[empty.Empty]
     ]:
-        r"""Return a callable for the delete access approval
-        settings method over gRPC.
+        r"""Return a callable for the
+        delete access approval
+        settings
+          method over gRPC.
 
         Deletes the settings associated with a project,
         folder, or organization. This will have the effect of

@@ -26,16 +26,15 @@ from .types.accessapproval import DeleteAccessApprovalSettingsMessage
 from .types.accessapproval import DismissApprovalRequestMessage
 from .types.accessapproval import DismissDecision
 from .types.accessapproval import EnrolledService
+from .types.accessapproval import EnrollmentLevel
 from .types.accessapproval import GetAccessApprovalSettingsMessage
 from .types.accessapproval import GetApprovalRequestMessage
 from .types.accessapproval import ListApprovalRequestsMessage
 from .types.accessapproval import ListApprovalRequestsResponse
 from .types.accessapproval import ResourceProperties
 from .types.accessapproval import UpdateAccessApprovalSettingsMessage
-from .types.accessapproval import EnrollmentLevel
 
 __all__ = (
-    "AccessApprovalClient",
     "AccessApprovalSettings",
     "AccessLocations",
     "AccessReason",
@@ -46,11 +45,12 @@ __all__ = (
     "DismissApprovalRequestMessage",
     "DismissDecision",
     "EnrolledService",
+    "EnrollmentLevel",
     "GetAccessApprovalSettingsMessage",
     "GetApprovalRequestMessage",
     "ListApprovalRequestsMessage",
     "ListApprovalRequestsResponse",
     "ResourceProperties",
     "UpdateAccessApprovalSettingsMessage",
-    "EnrollmentLevel",
+    "AccessApprovalClient",
 )
