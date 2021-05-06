@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 from collections import OrderedDict
 from distutils import util
 import os
@@ -34,6 +36,7 @@ from google.cloud.accessapproval_v1.services.access_approval import pagers
 from google.cloud.accessapproval_v1.types import accessapproval
 from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
+
 from .transports.base import AccessApprovalTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import AccessApprovalGrpcTransport
 from .transports.grpc_asyncio import AccessApprovalGrpcAsyncIOTransport
@@ -377,8 +380,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
 
         Args:
             request (google.cloud.accessapproval_v1.types.ListApprovalRequestsMessage):
-                The request object.
-                Request to list approval requests.
+                The request object. Request to list approval requests.
             parent (str):
                 The parent resource. This may be
                 "projects/{project_id}", "folders/{folder_id}", or
@@ -387,6 +389,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -418,8 +421,10 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         # there are no flattened fields.
         if not isinstance(request, accessapproval.ListApprovalRequestsMessage):
             request = accessapproval.ListApprovalRequestsMessage(request)
+
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
+
             if parent is not None:
                 request.parent = parent
 
@@ -459,8 +464,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
 
         Args:
             request (google.cloud.accessapproval_v1.types.GetApprovalRequestMessage):
-                The request object.
-                Request to get an approval request.
+                The request object. Request to get an approval request.
             name (str):
                 Name of the approval request to
                 retrieve.
@@ -468,6 +472,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -496,8 +501,10 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         # there are no flattened fields.
         if not isinstance(request, accessapproval.GetApprovalRequestMessage):
             request = accessapproval.GetApprovalRequestMessage(request)
+
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
+
             if name is not None:
                 request.name = name
 
@@ -533,9 +540,9 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
 
         Args:
             request (google.cloud.accessapproval_v1.types.ApproveApprovalRequestMessage):
-                The request object.
-                Request to approve an
+                The request object. Request to approve an
                 ApprovalRequest.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -549,6 +556,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
 
         """
         # Create or coerce a protobuf request object.
+
         # Minor optimization to avoid making a copy if the user passes
         # in a accessapproval.ApproveApprovalRequestMessage.
         # There's no risk of modifying the input as we've already verified
@@ -593,9 +601,9 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
 
         Args:
             request (google.cloud.accessapproval_v1.types.DismissApprovalRequestMessage):
-                The request object.
-                Request to dismiss an approval
+                The request object. Request to dismiss an approval
                 request.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -609,6 +617,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
 
         """
         # Create or coerce a protobuf request object.
+
         # Minor optimization to avoid making a copy if the user passes
         # in a accessapproval.DismissApprovalRequestMessage.
         # There's no risk of modifying the input as we've already verified
@@ -646,8 +655,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
 
         Args:
             request (google.cloud.accessapproval_v1.types.GetAccessApprovalSettingsMessage):
-                The request object.
-                Request to get access approval
+                The request object. Request to get access approval
                 settings.
             name (str):
                 Name of the AccessApprovalSettings to
@@ -656,6 +664,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -685,8 +694,10 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         # there are no flattened fields.
         if not isinstance(request, accessapproval.GetAccessApprovalSettingsMessage):
             request = accessapproval.GetAccessApprovalSettingsMessage(request)
+
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
+
             if name is not None:
                 request.name = name
 
@@ -724,8 +735,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
 
         Args:
             request (google.cloud.accessapproval_v1.types.UpdateAccessApprovalSettingsMessage):
-                The request object.
-                Request to update access approval
+                The request object. Request to update access approval
                 settings.
             settings (google.cloud.accessapproval_v1.types.AccessApprovalSettings):
                 The new AccessApprovalSettings.
@@ -748,6 +758,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -777,8 +788,10 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         # there are no flattened fields.
         if not isinstance(request, accessapproval.UpdateAccessApprovalSettingsMessage):
             request = accessapproval.UpdateAccessApprovalSettingsMessage(request)
+
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
+
             if settings is not None:
                 request.settings = settings
             if update_mask is not None:
@@ -824,8 +837,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
 
         Args:
             request (google.cloud.accessapproval_v1.types.DeleteAccessApprovalSettingsMessage):
-                The request object.
-                Request to delete access approval
+                The request object. Request to delete access approval
                 settings.
             name (str):
                 Name of the AccessApprovalSettings to
@@ -834,6 +846,7 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
+
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -856,8 +869,10 @@ class AccessApprovalClient(metaclass=AccessApprovalClientMeta):
         # there are no flattened fields.
         if not isinstance(request, accessapproval.DeleteAccessApprovalSettingsMessage):
             request = accessapproval.DeleteAccessApprovalSettingsMessage(request)
+
             # If we have keyword arguments corresponding to fields on the
             # request, apply these.
+
             if name is not None:
                 request.name = name
 

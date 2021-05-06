@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +14,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 import os
 import mock
-import packaging.version
 
 import grpc
 from grpc.experimental import aio
 import math
 import pytest
 from proto.marshal.rules.dates import DurationRule, TimestampRule
-
 
 from google import auth
 from google.api_core import client_options
@@ -38,39 +38,10 @@ from google.cloud.accessapproval_v1.services.access_approval import (
 from google.cloud.accessapproval_v1.services.access_approval import AccessApprovalClient
 from google.cloud.accessapproval_v1.services.access_approval import pagers
 from google.cloud.accessapproval_v1.services.access_approval import transports
-from google.cloud.accessapproval_v1.services.access_approval.transports.base import (
-    _API_CORE_VERSION,
-)
-from google.cloud.accessapproval_v1.services.access_approval.transports.base import (
-    _GOOGLE_AUTH_VERSION,
-)
 from google.cloud.accessapproval_v1.types import accessapproval
 from google.oauth2 import service_account
 from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
-
-
-# TODO(busunkim): Once google-api-core >= 1.26.0 is required:
-# - Delete all the api-core and auth "less than" test cases
-# - Delete these pytest markers (Make the "greater than or equal to" tests the default).
-requires_google_auth_lt_1_25_0 = pytest.mark.skipif(
-    packaging.version.parse(_GOOGLE_AUTH_VERSION) >= packaging.version.parse("1.25.0"),
-    reason="This test requires google-auth < 1.25.0",
-)
-requires_google_auth_gte_1_25_0 = pytest.mark.skipif(
-    packaging.version.parse(_GOOGLE_AUTH_VERSION) < packaging.version.parse("1.25.0"),
-    reason="This test requires google-auth >= 1.25.0",
-)
-
-requires_api_core_lt_1_26_0 = pytest.mark.skipif(
-    packaging.version.parse(_API_CORE_VERSION) >= packaging.version.parse("1.26.0"),
-    reason="This test requires google-api-core < 1.26.0",
-)
-
-requires_api_core_gte_1_26_0 = pytest.mark.skipif(
-    packaging.version.parse(_API_CORE_VERSION) < packaging.version.parse("1.26.0"),
-    reason="This test requires google-api-core >= 1.26.0",
-)
 
 
 def client_cert_source_callback():
@@ -494,15 +465,19 @@ def test_list_approval_requests(
         call.return_value = accessapproval.ListApprovalRequestsResponse(
             next_page_token="next_page_token_value",
         )
+
         response = client.list_approval_requests(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.ListApprovalRequestsMessage()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, pagers.ListApprovalRequestsPager)
+
     assert response.next_page_token == "next_page_token_value"
 
 
@@ -524,6 +499,7 @@ def test_list_approval_requests_empty_call():
         client.list_approval_requests()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.ListApprovalRequestsMessage()
 
 
@@ -550,15 +526,18 @@ async def test_list_approval_requests_async(
                 next_page_token="next_page_token_value",
             )
         )
+
         response = await client.list_approval_requests(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.ListApprovalRequestsMessage()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, pagers.ListApprovalRequestsAsyncPager)
+
     assert response.next_page_token == "next_page_token_value"
 
 
@@ -573,7 +552,6 @@ def test_list_approval_requests_field_headers():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.ListApprovalRequestsMessage()
-
     request.parent = "parent/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -581,6 +559,7 @@ def test_list_approval_requests_field_headers():
         type(client.transport.list_approval_requests), "__call__"
     ) as call:
         call.return_value = accessapproval.ListApprovalRequestsResponse()
+
         client.list_approval_requests(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -600,7 +579,6 @@ async def test_list_approval_requests_field_headers_async():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.ListApprovalRequestsMessage()
-
     request.parent = "parent/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -610,6 +588,7 @@ async def test_list_approval_requests_field_headers_async():
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             accessapproval.ListApprovalRequestsResponse()
         )
+
         await client.list_approval_requests(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -631,6 +610,7 @@ def test_list_approval_requests_flattened():
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = accessapproval.ListApprovalRequestsResponse()
+
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         client.list_approval_requests(parent="parent_value",)
@@ -639,6 +619,7 @@ def test_list_approval_requests_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0].parent == "parent_value"
 
 
@@ -675,6 +656,7 @@ async def test_list_approval_requests_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0].parent == "parent_value"
 
 
@@ -883,16 +865,21 @@ def test_get_approval_request(
                 approve_time=timestamp.Timestamp(seconds=751)
             ),
         )
+
         response = client.get_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.GetApprovalRequestMessage()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, accessapproval.ApprovalRequest)
+
     assert response.name == "name_value"
+
     assert response.requested_resource_name == "requested_resource_name_value"
 
 
@@ -914,6 +901,7 @@ def test_get_approval_request_empty_call():
         client.get_approval_request()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.GetApprovalRequestMessage()
 
 
@@ -941,16 +929,20 @@ async def test_get_approval_request_async(
                 requested_resource_name="requested_resource_name_value",
             )
         )
+
         response = await client.get_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.GetApprovalRequestMessage()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, accessapproval.ApprovalRequest)
+
     assert response.name == "name_value"
+
     assert response.requested_resource_name == "requested_resource_name_value"
 
 
@@ -965,7 +957,6 @@ def test_get_approval_request_field_headers():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.GetApprovalRequestMessage()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -973,6 +964,7 @@ def test_get_approval_request_field_headers():
         type(client.transport.get_approval_request), "__call__"
     ) as call:
         call.return_value = accessapproval.ApprovalRequest()
+
         client.get_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -992,7 +984,6 @@ async def test_get_approval_request_field_headers_async():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.GetApprovalRequestMessage()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1002,6 +993,7 @@ async def test_get_approval_request_field_headers_async():
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             accessapproval.ApprovalRequest()
         )
+
         await client.get_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1023,6 +1015,7 @@ def test_get_approval_request_flattened():
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = accessapproval.ApprovalRequest()
+
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         client.get_approval_request(name="name_value",)
@@ -1031,6 +1024,7 @@ def test_get_approval_request_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0].name == "name_value"
 
 
@@ -1067,6 +1061,7 @@ async def test_get_approval_request_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0].name == "name_value"
 
 
@@ -1105,16 +1100,21 @@ def test_approve_approval_request(
                 approve_time=timestamp.Timestamp(seconds=751)
             ),
         )
+
         response = client.approve_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.ApproveApprovalRequestMessage()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, accessapproval.ApprovalRequest)
+
     assert response.name == "name_value"
+
     assert response.requested_resource_name == "requested_resource_name_value"
 
 
@@ -1136,6 +1136,7 @@ def test_approve_approval_request_empty_call():
         client.approve_approval_request()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.ApproveApprovalRequestMessage()
 
 
@@ -1163,16 +1164,20 @@ async def test_approve_approval_request_async(
                 requested_resource_name="requested_resource_name_value",
             )
         )
+
         response = await client.approve_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.ApproveApprovalRequestMessage()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, accessapproval.ApprovalRequest)
+
     assert response.name == "name_value"
+
     assert response.requested_resource_name == "requested_resource_name_value"
 
 
@@ -1187,7 +1192,6 @@ def test_approve_approval_request_field_headers():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.ApproveApprovalRequestMessage()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1195,6 +1199,7 @@ def test_approve_approval_request_field_headers():
         type(client.transport.approve_approval_request), "__call__"
     ) as call:
         call.return_value = accessapproval.ApprovalRequest()
+
         client.approve_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1214,7 +1219,6 @@ async def test_approve_approval_request_field_headers_async():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.ApproveApprovalRequestMessage()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1224,6 +1228,7 @@ async def test_approve_approval_request_field_headers_async():
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             accessapproval.ApprovalRequest()
         )
+
         await client.approve_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1259,16 +1264,21 @@ def test_dismiss_approval_request(
                 approve_time=timestamp.Timestamp(seconds=751)
             ),
         )
+
         response = client.dismiss_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.DismissApprovalRequestMessage()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, accessapproval.ApprovalRequest)
+
     assert response.name == "name_value"
+
     assert response.requested_resource_name == "requested_resource_name_value"
 
 
@@ -1290,6 +1300,7 @@ def test_dismiss_approval_request_empty_call():
         client.dismiss_approval_request()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.DismissApprovalRequestMessage()
 
 
@@ -1317,16 +1328,20 @@ async def test_dismiss_approval_request_async(
                 requested_resource_name="requested_resource_name_value",
             )
         )
+
         response = await client.dismiss_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.DismissApprovalRequestMessage()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, accessapproval.ApprovalRequest)
+
     assert response.name == "name_value"
+
     assert response.requested_resource_name == "requested_resource_name_value"
 
 
@@ -1341,7 +1356,6 @@ def test_dismiss_approval_request_field_headers():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.DismissApprovalRequestMessage()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1349,6 +1363,7 @@ def test_dismiss_approval_request_field_headers():
         type(client.transport.dismiss_approval_request), "__call__"
     ) as call:
         call.return_value = accessapproval.ApprovalRequest()
+
         client.dismiss_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1368,7 +1383,6 @@ async def test_dismiss_approval_request_field_headers_async():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.DismissApprovalRequestMessage()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1378,6 +1392,7 @@ async def test_dismiss_approval_request_field_headers_async():
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             accessapproval.ApprovalRequest()
         )
+
         await client.dismiss_approval_request(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1412,17 +1427,23 @@ def test_get_access_approval_settings(
             notification_emails=["notification_emails_value"],
             enrolled_ancestor=True,
         )
+
         response = client.get_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.GetAccessApprovalSettingsMessage()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, accessapproval.AccessApprovalSettings)
+
     assert response.name == "name_value"
+
     assert response.notification_emails == ["notification_emails_value"]
+
     assert response.enrolled_ancestor is True
 
 
@@ -1444,6 +1465,7 @@ def test_get_access_approval_settings_empty_call():
         client.get_access_approval_settings()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.GetAccessApprovalSettingsMessage()
 
 
@@ -1472,17 +1494,22 @@ async def test_get_access_approval_settings_async(
                 enrolled_ancestor=True,
             )
         )
+
         response = await client.get_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.GetAccessApprovalSettingsMessage()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, accessapproval.AccessApprovalSettings)
+
     assert response.name == "name_value"
+
     assert response.notification_emails == ["notification_emails_value"]
+
     assert response.enrolled_ancestor is True
 
 
@@ -1497,7 +1524,6 @@ def test_get_access_approval_settings_field_headers():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.GetAccessApprovalSettingsMessage()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1505,6 +1531,7 @@ def test_get_access_approval_settings_field_headers():
         type(client.transport.get_access_approval_settings), "__call__"
     ) as call:
         call.return_value = accessapproval.AccessApprovalSettings()
+
         client.get_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1524,7 +1551,6 @@ async def test_get_access_approval_settings_field_headers_async():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.GetAccessApprovalSettingsMessage()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1534,6 +1560,7 @@ async def test_get_access_approval_settings_field_headers_async():
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             accessapproval.AccessApprovalSettings()
         )
+
         await client.get_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1555,6 +1582,7 @@ def test_get_access_approval_settings_flattened():
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = accessapproval.AccessApprovalSettings()
+
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         client.get_access_approval_settings(name="name_value",)
@@ -1563,6 +1591,7 @@ def test_get_access_approval_settings_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0].name == "name_value"
 
 
@@ -1599,6 +1628,7 @@ async def test_get_access_approval_settings_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0].name == "name_value"
 
 
@@ -1636,17 +1666,23 @@ def test_update_access_approval_settings(
             notification_emails=["notification_emails_value"],
             enrolled_ancestor=True,
         )
+
         response = client.update_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.UpdateAccessApprovalSettingsMessage()
 
     # Establish that the response is the type that we expect.
+
     assert isinstance(response, accessapproval.AccessApprovalSettings)
+
     assert response.name == "name_value"
+
     assert response.notification_emails == ["notification_emails_value"]
+
     assert response.enrolled_ancestor is True
 
 
@@ -1668,6 +1704,7 @@ def test_update_access_approval_settings_empty_call():
         client.update_access_approval_settings()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.UpdateAccessApprovalSettingsMessage()
 
 
@@ -1696,17 +1733,22 @@ async def test_update_access_approval_settings_async(
                 enrolled_ancestor=True,
             )
         )
+
         response = await client.update_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.UpdateAccessApprovalSettingsMessage()
 
     # Establish that the response is the type that we expect.
     assert isinstance(response, accessapproval.AccessApprovalSettings)
+
     assert response.name == "name_value"
+
     assert response.notification_emails == ["notification_emails_value"]
+
     assert response.enrolled_ancestor is True
 
 
@@ -1721,7 +1763,6 @@ def test_update_access_approval_settings_field_headers():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.UpdateAccessApprovalSettingsMessage()
-
     request.settings.name = "settings.name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1729,6 +1770,7 @@ def test_update_access_approval_settings_field_headers():
         type(client.transport.update_access_approval_settings), "__call__"
     ) as call:
         call.return_value = accessapproval.AccessApprovalSettings()
+
         client.update_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1750,7 +1792,6 @@ async def test_update_access_approval_settings_field_headers_async():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.UpdateAccessApprovalSettingsMessage()
-
     request.settings.name = "settings.name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1760,6 +1801,7 @@ async def test_update_access_approval_settings_field_headers_async():
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             accessapproval.AccessApprovalSettings()
         )
+
         await client.update_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1783,6 +1825,7 @@ def test_update_access_approval_settings_flattened():
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = accessapproval.AccessApprovalSettings()
+
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         client.update_access_approval_settings(
@@ -1794,9 +1837,11 @@ def test_update_access_approval_settings_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0].settings == accessapproval.AccessApprovalSettings(
             name="name_value"
         )
+
         assert args[0].update_mask == field_mask.FieldMask(paths=["paths_value"])
 
 
@@ -1838,9 +1883,11 @@ async def test_update_access_approval_settings_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0].settings == accessapproval.AccessApprovalSettings(
             name="name_value"
         )
+
         assert args[0].update_mask == field_mask.FieldMask(paths=["paths_value"])
 
 
@@ -1876,11 +1923,13 @@ def test_delete_access_approval_settings(
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = None
+
         response = client.delete_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.DeleteAccessApprovalSettingsMessage()
 
     # Establish that the response is the type that we expect.
@@ -1905,6 +1954,7 @@ def test_delete_access_approval_settings_empty_call():
         client.delete_access_approval_settings()
         call.assert_called()
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.DeleteAccessApprovalSettingsMessage()
 
 
@@ -1927,11 +1977,13 @@ async def test_delete_access_approval_settings_async(
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(None)
+
         response = await client.delete_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0] == accessapproval.DeleteAccessApprovalSettingsMessage()
 
     # Establish that the response is the type that we expect.
@@ -1949,7 +2001,6 @@ def test_delete_access_approval_settings_field_headers():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.DeleteAccessApprovalSettingsMessage()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1957,6 +2008,7 @@ def test_delete_access_approval_settings_field_headers():
         type(client.transport.delete_access_approval_settings), "__call__"
     ) as call:
         call.return_value = None
+
         client.delete_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -1976,7 +2028,6 @@ async def test_delete_access_approval_settings_field_headers_async():
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
     request = accessapproval.DeleteAccessApprovalSettingsMessage()
-
     request.name = "name/value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -1984,6 +2035,7 @@ async def test_delete_access_approval_settings_field_headers_async():
         type(client.transport.delete_access_approval_settings), "__call__"
     ) as call:
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(None)
+
         await client.delete_access_approval_settings(request)
 
         # Establish that the underlying gRPC stub method was called.
@@ -2005,6 +2057,7 @@ def test_delete_access_approval_settings_flattened():
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = None
+
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         client.delete_access_approval_settings(name="name_value",)
@@ -2013,6 +2066,7 @@ def test_delete_access_approval_settings_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
+
         assert args[0].name == "name_value"
 
 
@@ -2047,6 +2101,7 @@ async def test_delete_access_approval_settings_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
+
         assert args[0].name == "name_value"
 
 
@@ -2172,32 +2227,10 @@ def test_access_approval_base_transport():
             getattr(transport, method)(request=object())
 
 
-@requires_google_auth_gte_1_25_0
 def test_access_approval_base_transport_with_credentials_file():
     # Instantiate the base transport with a credentials file
     with mock.patch.object(
-        auth, "load_credentials_from_file", autospec=True
-    ) as load_creds, mock.patch(
-        "google.cloud.accessapproval_v1.services.access_approval.transports.AccessApprovalTransport._prep_wrapped_messages"
-    ) as Transport:
-        Transport.return_value = None
-        load_creds.return_value = (credentials.AnonymousCredentials(), None)
-        transport = transports.AccessApprovalTransport(
-            credentials_file="credentials.json", quota_project_id="octopus",
-        )
-        load_creds.assert_called_once_with(
-            "credentials.json",
-            scopes=None,
-            default_scopes=("https://www.googleapis.com/auth/cloud-platform",),
-            quota_project_id="octopus",
-        )
-
-
-@requires_google_auth_lt_1_25_0
-def test_access_approval_base_transport_with_credentials_file_old_google_auth():
-    # Instantiate the base transport with a credentials file
-    with mock.patch.object(
-        auth, "load_credentials_from_file", autospec=True
+        auth, "load_credentials_from_file"
     ) as load_creds, mock.patch(
         "google.cloud.accessapproval_v1.services.access_approval.transports.AccessApprovalTransport._prep_wrapped_messages"
     ) as Transport:
@@ -2215,7 +2248,7 @@ def test_access_approval_base_transport_with_credentials_file_old_google_auth():
 
 def test_access_approval_base_transport_with_adc():
     # Test the default credentials are used if credentials and credentials_file are None.
-    with mock.patch.object(auth, "default", autospec=True) as adc, mock.patch(
+    with mock.patch.object(auth, "default") as adc, mock.patch(
         "google.cloud.accessapproval_v1.services.access_approval.transports.AccessApprovalTransport._prep_wrapped_messages"
     ) as Transport:
         Transport.return_value = None
@@ -2224,23 +2257,9 @@ def test_access_approval_base_transport_with_adc():
         adc.assert_called_once()
 
 
-@requires_google_auth_gte_1_25_0
 def test_access_approval_auth_adc():
     # If no credentials are provided, we should use ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc:
-        adc.return_value = (credentials.AnonymousCredentials(), None)
-        AccessApprovalClient()
-        adc.assert_called_once_with(
-            scopes=None,
-            default_scopes=("https://www.googleapis.com/auth/cloud-platform",),
-            quota_project_id=None,
-        )
-
-
-@requires_google_auth_lt_1_25_0
-def test_access_approval_auth_adc_old_google_auth():
-    # If no credentials are provided, we should use ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc:
+    with mock.patch.object(auth, "default") as adc:
         adc.return_value = (credentials.AnonymousCredentials(), None)
         AccessApprovalClient()
         adc.assert_called_once_with(
@@ -2249,147 +2268,17 @@ def test_access_approval_auth_adc_old_google_auth():
         )
 
 
-@pytest.mark.parametrize(
-    "transport_class",
-    [
-        transports.AccessApprovalGrpcTransport,
-        transports.AccessApprovalGrpcAsyncIOTransport,
-    ],
-)
-@requires_google_auth_gte_1_25_0
-def test_access_approval_transport_auth_adc(transport_class):
+def test_access_approval_transport_auth_adc():
     # If credentials and host are not provided, the transport class should use
     # ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc:
+    with mock.patch.object(auth, "default") as adc:
         adc.return_value = (credentials.AnonymousCredentials(), None)
-        transport_class(quota_project_id="octopus", scopes=["1", "2"])
-        adc.assert_called_once_with(
-            scopes=["1", "2"],
-            default_scopes=("https://www.googleapis.com/auth/cloud-platform",),
-            quota_project_id="octopus",
+        transports.AccessApprovalGrpcTransport(
+            host="squid.clam.whelk", quota_project_id="octopus"
         )
-
-
-@pytest.mark.parametrize(
-    "transport_class",
-    [
-        transports.AccessApprovalGrpcTransport,
-        transports.AccessApprovalGrpcAsyncIOTransport,
-    ],
-)
-@requires_google_auth_lt_1_25_0
-def test_access_approval_transport_auth_adc_old_google_auth(transport_class):
-    # If credentials and host are not provided, the transport class should use
-    # ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc:
-        adc.return_value = (credentials.AnonymousCredentials(), None)
-        transport_class(quota_project_id="octopus")
         adc.assert_called_once_with(
             scopes=("https://www.googleapis.com/auth/cloud-platform",),
             quota_project_id="octopus",
-        )
-
-
-@pytest.mark.parametrize(
-    "transport_class,grpc_helpers",
-    [
-        (transports.AccessApprovalGrpcTransport, grpc_helpers),
-        (transports.AccessApprovalGrpcAsyncIOTransport, grpc_helpers_async),
-    ],
-)
-@requires_api_core_gte_1_26_0
-def test_access_approval_transport_create_channel(transport_class, grpc_helpers):
-    # If credentials and host are not provided, the transport class should use
-    # ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc, mock.patch.object(
-        grpc_helpers, "create_channel", autospec=True
-    ) as create_channel:
-        creds = credentials.AnonymousCredentials()
-        adc.return_value = (creds, None)
-        transport_class(quota_project_id="octopus", scopes=["1", "2"])
-
-        create_channel.assert_called_with(
-            "accessapproval.googleapis.com",
-            credentials=creds,
-            credentials_file=None,
-            quota_project_id="octopus",
-            default_scopes=("https://www.googleapis.com/auth/cloud-platform",),
-            scopes=["1", "2"],
-            default_host="accessapproval.googleapis.com",
-            ssl_credentials=None,
-            options=[
-                ("grpc.max_send_message_length", -1),
-                ("grpc.max_receive_message_length", -1),
-            ],
-        )
-
-
-@pytest.mark.parametrize(
-    "transport_class,grpc_helpers",
-    [
-        (transports.AccessApprovalGrpcTransport, grpc_helpers),
-        (transports.AccessApprovalGrpcAsyncIOTransport, grpc_helpers_async),
-    ],
-)
-@requires_api_core_lt_1_26_0
-def test_access_approval_transport_create_channel_old_api_core(
-    transport_class, grpc_helpers
-):
-    # If credentials and host are not provided, the transport class should use
-    # ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc, mock.patch.object(
-        grpc_helpers, "create_channel", autospec=True
-    ) as create_channel:
-        creds = credentials.AnonymousCredentials()
-        adc.return_value = (creds, None)
-        transport_class(quota_project_id="octopus")
-
-        create_channel.assert_called_with(
-            "accessapproval.googleapis.com",
-            credentials=creds,
-            credentials_file=None,
-            quota_project_id="octopus",
-            scopes=("https://www.googleapis.com/auth/cloud-platform",),
-            ssl_credentials=None,
-            options=[
-                ("grpc.max_send_message_length", -1),
-                ("grpc.max_receive_message_length", -1),
-            ],
-        )
-
-
-@pytest.mark.parametrize(
-    "transport_class,grpc_helpers",
-    [
-        (transports.AccessApprovalGrpcTransport, grpc_helpers),
-        (transports.AccessApprovalGrpcAsyncIOTransport, grpc_helpers_async),
-    ],
-)
-@requires_api_core_lt_1_26_0
-def test_access_approval_transport_create_channel_user_scopes(
-    transport_class, grpc_helpers
-):
-    # If credentials and host are not provided, the transport class should use
-    # ADC credentials.
-    with mock.patch.object(auth, "default", autospec=True) as adc, mock.patch.object(
-        grpc_helpers, "create_channel", autospec=True
-    ) as create_channel:
-        creds = credentials.AnonymousCredentials()
-        adc.return_value = (creds, None)
-
-        transport_class(quota_project_id="octopus", scopes=["1", "2"])
-
-        create_channel.assert_called_with(
-            "accessapproval.googleapis.com",
-            credentials=creds,
-            credentials_file=None,
-            quota_project_id="octopus",
-            scopes=["1", "2"],
-            ssl_credentials=None,
-            options=[
-                ("grpc.max_send_message_length", -1),
-                ("grpc.max_receive_message_length", -1),
-            ],
         )
 
 
@@ -2584,6 +2473,7 @@ def test_access_approval_transport_channel_mtls_with_adc(transport_class):
 
 def test_common_billing_account_path():
     billing_account = "squid"
+
     expected = "billingAccounts/{billing_account}".format(
         billing_account=billing_account,
     )
@@ -2604,6 +2494,7 @@ def test_parse_common_billing_account_path():
 
 def test_common_folder_path():
     folder = "whelk"
+
     expected = "folders/{folder}".format(folder=folder,)
     actual = AccessApprovalClient.common_folder_path(folder)
     assert expected == actual
@@ -2622,6 +2513,7 @@ def test_parse_common_folder_path():
 
 def test_common_organization_path():
     organization = "oyster"
+
     expected = "organizations/{organization}".format(organization=organization,)
     actual = AccessApprovalClient.common_organization_path(organization)
     assert expected == actual
@@ -2640,6 +2532,7 @@ def test_parse_common_organization_path():
 
 def test_common_project_path():
     project = "cuttlefish"
+
     expected = "projects/{project}".format(project=project,)
     actual = AccessApprovalClient.common_project_path(project)
     assert expected == actual
@@ -2659,6 +2552,7 @@ def test_parse_common_project_path():
 def test_common_location_path():
     project = "winkle"
     location = "nautilus"
+
     expected = "projects/{project}/locations/{location}".format(
         project=project, location=location,
     )
