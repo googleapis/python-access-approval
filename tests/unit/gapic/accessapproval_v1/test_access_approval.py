@@ -2309,7 +2309,7 @@ def test_access_approval_transport_create_channel(transport_class, grpc_helpers)
         transport_class(quota_project_id="octopus", scopes=["1", "2"])
 
         create_channel.assert_called_with(
-            "accessapproval.googleapis.com",
+            "accessapproval.googleapis.com:443",
             credentials=creds,
             credentials_file=None,
             quota_project_id="octopus",
