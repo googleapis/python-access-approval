@@ -2,23 +2,14 @@
 
 .. include:: multiprocessing.rst
 
-Api Reference
+
+API Reference
 -------------
 .. toctree::
     :maxdepth: 2
 
     accessapproval_v1/services
     accessapproval_v1/types
-
-Migration Guide
----------------
-
-See the guide below for instructions on migrating to the 2.x release of this library.
-
-.. toctree::
-    :maxdepth: 2
-
-    UPGRADING
 
 Changelog
 ---------
