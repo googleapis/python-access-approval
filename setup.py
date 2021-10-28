@@ -81,7 +81,7 @@ setuptools.setup(
     scripts=["scripts/fixup_accessapproval_v1_keywords.py"],
     namespace_packages=namespaces,
     install_requires=dependencies,
-    extras_requires=extras,
+    extras_require=extras,
     include_package_data=True,
     zip_safe=False,
 )
