@@ -22,4 +22,4 @@ jobs:
         python -m pip install nox
     - name: Run docs
       run: |
-        nox -s docs
+        nox -s docs docfx
