@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-unittests:
-    name: unit${{ matrix.option }}-${{ matrix.python }}
+    name: unit-${{ matrix.python }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
