@@ -276,6 +276,8 @@ class AccessApprovalAsyncClient:
 
                 # Make the request
                 page_result = client.list_approval_requests(request=request)
+
+                # Handle the response
                 for response in page_result:
                     print(response)
 
@@ -386,7 +388,7 @@ class AccessApprovalAsyncClient:
                 # Make the request
                 response = client.get_approval_request(request=request)
 
-                # Handle response
+                # Handle the response
                 print(response)
 
         Args:
@@ -487,7 +489,7 @@ class AccessApprovalAsyncClient:
                 # Make the request
                 response = client.approve_approval_request(request=request)
 
-                # Handle response
+                # Handle the response
                 print(response)
 
         Args:
@@ -564,7 +566,7 @@ class AccessApprovalAsyncClient:
                 # Make the request
                 response = client.dismiss_approval_request(request=request)
 
-                # Handle response
+                # Handle the response
                 print(response)
 
         Args:
@@ -634,7 +636,7 @@ class AccessApprovalAsyncClient:
                 # Make the request
                 response = client.get_access_approval_settings(request=request)
 
-                # Handle response
+                # Handle the response
                 print(response)
 
         Args:
@@ -738,7 +740,7 @@ class AccessApprovalAsyncClient:
                 # Make the request
                 response = client.update_access_approval_settings(request=request)
 
-                # Handle response
+                # Handle the response
                 print(response)
 
         Args:
@@ -852,7 +854,7 @@ class AccessApprovalAsyncClient:
                 )
 
                 # Make the request
-                response = client.delete_access_approval_settings(request=request)
+                client.delete_access_approval_settings(request=request)
 
         Args:
             request (Union[google.cloud.accessapproval_v1.types.DeleteAccessApprovalSettingsMessage, dict]):
