@@ -25,7 +25,7 @@ description = "Access Approval API client library"
 version = "1.0.0"
 release_status = "Development Status :: 4 - Beta"
 dependencies = [
-    "google-api-core[grpc]  >= 1.31.5, <3.0.0dev,!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0",
+    "google-api-core[grpc] >= 1.31.5, <3.0.0dev,!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0",
     "proto-plus >= 1.4.0",
     "libcst >= 0.2.5",
 ]
