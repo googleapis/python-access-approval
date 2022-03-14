@@ -4,3 +4,6 @@ branches:
   - branch: v0
     handleGHRelease: true
     releaseType: python
+  - branch: v5
+    handleGHRelease: true
+    releaseType: python
