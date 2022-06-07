@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/googleapis/python-access-approval/compare/v0.2.1...v0.2.2) (2022-06-07)
+
+
+### Bug Fixes
+
+* **deps:** require protobuf>=3.19.0,<4.0.0 on v0 branch ([#211](https://github.com/googleapis/python-access-approval/issues/211)) ([32f1acd](https://github.com/googleapis/python-access-approval/commit/32f1acd1335a82a32a86e281f963604db6f591b5))
+
 ### [0.2.1](https://github.com/googleapis/python-access-approval/compare/v0.2.0...v0.2.1) (2022-03-14)
 
 
