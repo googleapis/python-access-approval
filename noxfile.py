@@ -337,14 +337,10 @@ def prerelease_deps(session):
         # dependency of grpc
         "six",
         "googleapis-common-protos",
-        "google-auth",
         "grpcio",
         "grpcio-status",
         "google-api-core",
         "proto-plus",
-        # dependencies of google-auth
-        "cryptography",
-        "pyasn1",
         "google-cloud-testutils",
         # dependencies of google-cloud-testutils"
         "click",
