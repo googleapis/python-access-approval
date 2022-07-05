@@ -334,6 +334,8 @@ def prerelease_deps(session):
 
     prerel_deps = [
         "protobuf",
+        # dependency of grpc
+        "six",
         "googleapis-common-protos",
         "google-auth",
         "grpcio",
@@ -343,6 +345,9 @@ def prerelease_deps(session):
         # dependencies of google-auth
         "cryptography",
         "pyasn1",
+        "google-cloud-testutils",
+        # dependencies of google-cloud-testutils"
+        "click",
     ]
 
     for dep in prerel_deps:
@@ -352,8 +357,17 @@ def prerelease_deps(session):
     other_deps = ["requests"]
     session.install(*other_deps)
 
-    session.install(*UNIT_TEST_STANDARD_DEPENDENCIES)
-    session.install(*SYSTEM_TEST_STANDARD_DEPENDENCIES)
+    # Don't overwrite prerelease packages.
+    unit_test_deps = [
+        dep for dep in UNIT_TEST_STANDARD_DEPENDENCIES if dep not in prerel_deps
+    ]
+    session.install(*unit_test_deps)
+
+    # Don't overwrite prerelease packages.
+    system_deps = [
+        dep for dep in SYSTEM_TEST_STANDARD_DEPENDENCIES if dep not in prerel_deps
+    ]
+    session.install(*system_deps)
 
     # Because we test minimum dependency versions on the minimum Python
     # version, the first version we test with in the unit tests sessions has a
@@ -367,7 +381,7 @@ def prerelease_deps(session):
         constraints_text = constraints_file.read()
 
     # Ignore leading whitespace and comment lines.
-    deps = [
+    constraints_deps = [
         match.group(1)
         for match in re.finditer(
             r"^\s*(\S+)(?===\S+)", constraints_text, flags=re.MULTILINE
@@ -375,10 +389,12 @@ def prerelease_deps(session):
     ]
 
     # Don't overwrite prerelease packages.
-    deps = [dep for dep in deps if dep not in prerel_deps]
+    constraints_deps = [dep for dep in constraints_deps if dep not in prerel_deps]
+    if constraints_deps:
+        session.install(*constraints_deps)
+
     # We use --no-deps to ensure that pre-release versions aren't overwritten
     # by the version ranges in setup.py.
-    session.install(*deps)
     session.install("--no-deps", "-e", ".[all]")
 
     # Print out prerelease package versions
