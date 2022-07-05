@@ -350,7 +350,10 @@ def prerelease_deps(session):
         session.install("--pre", "--no-deps", "--upgrade", dep)
 
     # Remaining dependencies
-    other_deps = ["requests"]
+    other_deps = [
+        "requests",
+        "google-auth",
+    ]
     session.install(*other_deps)
 
     # Don't overwrite prerelease packages.
@@ -400,5 +403,16 @@ def prerelease_deps(session):
     session.run("python", "-c", "import grpc; print(grpc.__version__)")
 
     session.run("py.test", "tests/unit")
-    session.run("py.test", "tests/system")
-    session.run("py.test", "samples/snippets")
+
+    system_test_path = os.path.join("tests", "system.py")
+    system_test_folder_path = os.path.join("tests", "system")
+
+    # Only run system tests if found.
+    if os.path.exists(system_test_path) or os.path.exists(system_test_folder_path):
+        session.run("py.test", "tests/system")
+
+    snippets_test_path = os.path.join("samples", "snippets")
+
+    # Only run samples tests if found.
+    if os.path.exists(snippets_test_path):
+        session.run("py.test", "samples/snippets")
