@@ -3144,7 +3144,6 @@ def test_access_approval_transport_auth_adc(transport_class):
     [
         transports.AccessApprovalGrpcTransport,
         transports.AccessApprovalGrpcAsyncIOTransport,
-        transports.AccessApprovalRestTransport,
     ],
 )
 def test_access_approval_transport_auth_gdch_credentials(transport_class):
