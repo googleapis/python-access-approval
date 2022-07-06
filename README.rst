@@ -3,7 +3,7 @@ Python Client for Access Approval API
 
 |stable| |pypi| |versions|
 
-`Access Approval API`_: 
+`Access Approval API`_: enables controlling access to your organization's data by Google personnel.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
