@@ -10,11 +10,6 @@
                     "type": "json",
                     "path": "samples/generated_samples/snippet_metadata_google.cloud.accessapproval.v1.json",
                     "jsonpath": "$.clientLibrary.version"
-                },
-                {
-                    "type": "json",
-                    "path": "samples/generated_samples/snippet_metadata_google.cloud.accessapproval.v1beta2.json",
-                    "jsonpath": "$.clientLibrary.version"
                 }
             ]
         }
