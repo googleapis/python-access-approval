@@ -14,24 +14,21 @@
 # limitations under the License.
 #
 
-from google.auth.transport.requests import AuthorizedSession  # type: ignore
-import json  # type: ignore
-import grpc  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth import credentials as ga_credentials  # type: ignore
-from google.api_core import exceptions as core_exceptions
-from google.api_core import retry as retries
-from google.api_core import rest_helpers
-from google.api_core import rest_streaming
-from google.api_core import path_template
-from google.api_core import gapic_v1
-
-from google.protobuf import json_format
-from requests import __version__ as requests_version
 import dataclasses
+import json  # type: ignore
 import re
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
+
+from google.api_core import gapic_v1, path_template, rest_helpers, rest_streaming
+from google.api_core import exceptions as core_exceptions
+from google.api_core import retry as retries
+from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
+from google.auth.transport.requests import AuthorizedSession  # type: ignore
+from google.protobuf import json_format
+import grpc  # type: ignore
+from requests import __version__ as requests_version
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -39,11 +36,12 @@ except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
 
-from google.cloud.accessapproval_v1.types import accessapproval
 from google.protobuf import empty_pb2  # type: ignore
 
-from .base import AccessApprovalTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from google.cloud.accessapproval_v1.types import accessapproval
 
+from .base import AccessApprovalTransport
+from .base import DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     gapic_version=BASE_DEFAULT_CLIENT_INFO.gapic_version,
@@ -140,7 +138,12 @@ class AccessApprovalRestInterceptor:
 
 
     """
-    def pre_approve_approval_request(self, request: accessapproval.ApproveApprovalRequestMessage, metadata: Sequence[Tuple[str, str]]) -> Tuple[accessapproval.ApproveApprovalRequestMessage, Sequence[Tuple[str, str]]]:
+
+    def pre_approve_approval_request(
+        self,
+        request: accessapproval.ApproveApprovalRequestMessage,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[accessapproval.ApproveApprovalRequestMessage, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for approve_approval_request
 
         Override in a subclass to manipulate the request or metadata
@@ -148,7 +151,9 @@ class AccessApprovalRestInterceptor:
         """
         return request, metadata
 
-    def post_approve_approval_request(self, response: accessapproval.ApprovalRequest) -> accessapproval.ApprovalRequest:
+    def post_approve_approval_request(
+        self, response: accessapproval.ApprovalRequest
+    ) -> accessapproval.ApprovalRequest:
         """Post-rpc interceptor for approve_approval_request
 
         Override in a subclass to manipulate the response
@@ -156,7 +161,14 @@ class AccessApprovalRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_access_approval_settings(self, request: accessapproval.DeleteAccessApprovalSettingsMessage, metadata: Sequence[Tuple[str, str]]) -> Tuple[accessapproval.DeleteAccessApprovalSettingsMessage, Sequence[Tuple[str, str]]]:
+
+    def pre_delete_access_approval_settings(
+        self,
+        request: accessapproval.DeleteAccessApprovalSettingsMessage,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[
+        accessapproval.DeleteAccessApprovalSettingsMessage, Sequence[Tuple[str, str]]
+    ]:
         """Pre-rpc interceptor for delete_access_approval_settings
 
         Override in a subclass to manipulate the request or metadata
@@ -164,7 +176,11 @@ class AccessApprovalRestInterceptor:
         """
         return request, metadata
 
-    def pre_dismiss_approval_request(self, request: accessapproval.DismissApprovalRequestMessage, metadata: Sequence[Tuple[str, str]]) -> Tuple[accessapproval.DismissApprovalRequestMessage, Sequence[Tuple[str, str]]]:
+    def pre_dismiss_approval_request(
+        self,
+        request: accessapproval.DismissApprovalRequestMessage,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[accessapproval.DismissApprovalRequestMessage, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for dismiss_approval_request
 
         Override in a subclass to manipulate the request or metadata
@@ -172,7 +188,9 @@ class AccessApprovalRestInterceptor:
         """
         return request, metadata
 
-    def post_dismiss_approval_request(self, response: accessapproval.ApprovalRequest) -> accessapproval.ApprovalRequest:
+    def post_dismiss_approval_request(
+        self, response: accessapproval.ApprovalRequest
+    ) -> accessapproval.ApprovalRequest:
         """Post-rpc interceptor for dismiss_approval_request
 
         Override in a subclass to manipulate the response
@@ -180,7 +198,14 @@ class AccessApprovalRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_access_approval_service_account(self, request: accessapproval.GetAccessApprovalServiceAccountMessage, metadata: Sequence[Tuple[str, str]]) -> Tuple[accessapproval.GetAccessApprovalServiceAccountMessage, Sequence[Tuple[str, str]]]:
+
+    def pre_get_access_approval_service_account(
+        self,
+        request: accessapproval.GetAccessApprovalServiceAccountMessage,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[
+        accessapproval.GetAccessApprovalServiceAccountMessage, Sequence[Tuple[str, str]]
+    ]:
         """Pre-rpc interceptor for get_access_approval_service_account
 
         Override in a subclass to manipulate the request or metadata
@@ -188,7 +213,9 @@ class AccessApprovalRestInterceptor:
         """
         return request, metadata
 
-    def post_get_access_approval_service_account(self, response: accessapproval.AccessApprovalServiceAccount) -> accessapproval.AccessApprovalServiceAccount:
+    def post_get_access_approval_service_account(
+        self, response: accessapproval.AccessApprovalServiceAccount
+    ) -> accessapproval.AccessApprovalServiceAccount:
         """Post-rpc interceptor for get_access_approval_service_account
 
         Override in a subclass to manipulate the response
@@ -196,7 +223,14 @@ class AccessApprovalRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_access_approval_settings(self, request: accessapproval.GetAccessApprovalSettingsMessage, metadata: Sequence[Tuple[str, str]]) -> Tuple[accessapproval.GetAccessApprovalSettingsMessage, Sequence[Tuple[str, str]]]:
+
+    def pre_get_access_approval_settings(
+        self,
+        request: accessapproval.GetAccessApprovalSettingsMessage,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[
+        accessapproval.GetAccessApprovalSettingsMessage, Sequence[Tuple[str, str]]
+    ]:
         """Pre-rpc interceptor for get_access_approval_settings
 
         Override in a subclass to manipulate the request or metadata
@@ -204,7 +238,9 @@ class AccessApprovalRestInterceptor:
         """
         return request, metadata
 
-    def post_get_access_approval_settings(self, response: accessapproval.AccessApprovalSettings) -> accessapproval.AccessApprovalSettings:
+    def post_get_access_approval_settings(
+        self, response: accessapproval.AccessApprovalSettings
+    ) -> accessapproval.AccessApprovalSettings:
         """Post-rpc interceptor for get_access_approval_settings
 
         Override in a subclass to manipulate the response
@@ -212,7 +248,12 @@ class AccessApprovalRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_approval_request(self, request: accessapproval.GetApprovalRequestMessage, metadata: Sequence[Tuple[str, str]]) -> Tuple[accessapproval.GetApprovalRequestMessage, Sequence[Tuple[str, str]]]:
+
+    def pre_get_approval_request(
+        self,
+        request: accessapproval.GetApprovalRequestMessage,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[accessapproval.GetApprovalRequestMessage, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_approval_request
 
         Override in a subclass to manipulate the request or metadata
@@ -220,7 +261,9 @@ class AccessApprovalRestInterceptor:
         """
         return request, metadata
 
-    def post_get_approval_request(self, response: accessapproval.ApprovalRequest) -> accessapproval.ApprovalRequest:
+    def post_get_approval_request(
+        self, response: accessapproval.ApprovalRequest
+    ) -> accessapproval.ApprovalRequest:
         """Post-rpc interceptor for get_approval_request
 
         Override in a subclass to manipulate the response
@@ -228,7 +271,14 @@ class AccessApprovalRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_invalidate_approval_request(self, request: accessapproval.InvalidateApprovalRequestMessage, metadata: Sequence[Tuple[str, str]]) -> Tuple[accessapproval.InvalidateApprovalRequestMessage, Sequence[Tuple[str, str]]]:
+
+    def pre_invalidate_approval_request(
+        self,
+        request: accessapproval.InvalidateApprovalRequestMessage,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[
+        accessapproval.InvalidateApprovalRequestMessage, Sequence[Tuple[str, str]]
+    ]:
         """Pre-rpc interceptor for invalidate_approval_request
 
         Override in a subclass to manipulate the request or metadata
@@ -236,7 +286,9 @@ class AccessApprovalRestInterceptor:
         """
         return request, metadata
 
-    def post_invalidate_approval_request(self, response: accessapproval.ApprovalRequest) -> accessapproval.ApprovalRequest:
+    def post_invalidate_approval_request(
+        self, response: accessapproval.ApprovalRequest
+    ) -> accessapproval.ApprovalRequest:
         """Post-rpc interceptor for invalidate_approval_request
 
         Override in a subclass to manipulate the response
@@ -244,7 +296,12 @@ class AccessApprovalRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_approval_requests(self, request: accessapproval.ListApprovalRequestsMessage, metadata: Sequence[Tuple[str, str]]) -> Tuple[accessapproval.ListApprovalRequestsMessage, Sequence[Tuple[str, str]]]:
+
+    def pre_list_approval_requests(
+        self,
+        request: accessapproval.ListApprovalRequestsMessage,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[accessapproval.ListApprovalRequestsMessage, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_approval_requests
 
         Override in a subclass to manipulate the request or metadata
@@ -252,7 +309,9 @@ class AccessApprovalRestInterceptor:
         """
         return request, metadata
 
-    def post_list_approval_requests(self, response: accessapproval.ListApprovalRequestsResponse) -> accessapproval.ListApprovalRequestsResponse:
+    def post_list_approval_requests(
+        self, response: accessapproval.ListApprovalRequestsResponse
+    ) -> accessapproval.ListApprovalRequestsResponse:
         """Post-rpc interceptor for list_approval_requests
 
         Override in a subclass to manipulate the response
@@ -260,7 +319,14 @@ class AccessApprovalRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_update_access_approval_settings(self, request: accessapproval.UpdateAccessApprovalSettingsMessage, metadata: Sequence[Tuple[str, str]]) -> Tuple[accessapproval.UpdateAccessApprovalSettingsMessage, Sequence[Tuple[str, str]]]:
+
+    def pre_update_access_approval_settings(
+        self,
+        request: accessapproval.UpdateAccessApprovalSettingsMessage,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[
+        accessapproval.UpdateAccessApprovalSettingsMessage, Sequence[Tuple[str, str]]
+    ]:
         """Pre-rpc interceptor for update_access_approval_settings
 
         Override in a subclass to manipulate the request or metadata
@@ -268,7 +334,9 @@ class AccessApprovalRestInterceptor:
         """
         return request, metadata
 
-    def post_update_access_approval_settings(self, response: accessapproval.AccessApprovalSettings) -> accessapproval.AccessApprovalSettings:
+    def post_update_access_approval_settings(
+        self, response: accessapproval.AccessApprovalSettings
+    ) -> accessapproval.AccessApprovalSettings:
         """Post-rpc interceptor for update_access_approval_settings
 
         Override in a subclass to manipulate the response
@@ -332,20 +400,21 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'accessapproval.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[AccessApprovalRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "accessapproval.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[AccessApprovalRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -384,7 +453,9 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -395,10 +466,11 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
         self._interceptor = interceptor or AccessApprovalRestInterceptor()
@@ -408,12 +480,14 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
         def __hash__(self):
             return hash("ApproveApprovalRequest")
 
-        def __call__(self,
-                request: accessapproval.ApproveApprovalRequestMessage, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> accessapproval.ApprovalRequest:
+        def __call__(
+            self,
+            request: accessapproval.ApproveApprovalRequestMessage,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> accessapproval.ApprovalRequest:
             r"""Call the approve approval request method over HTTP.
 
             Args:
@@ -434,55 +508,60 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=projects/*/approvalRequests/*}:approve',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1/{name=folders/*/approvalRequests/*}:approve',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1/{name=organizations/*/approvalRequests/*}:approve',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/approvalRequests/*}:approve",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=folders/*/approvalRequests/*}:approve",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=organizations/*/approvalRequests/*}:approve",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_approve_approval_request(request, metadata)
+            request, metadata = self._interceptor.pre_approve_approval_request(
+                request, metadata
+            )
             pb_request = accessapproval.ApproveApprovalRequestMessage.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -501,65 +580,72 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
         def __hash__(self):
             return hash("DeleteAccessApprovalSettings")
 
-        def __call__(self,
-                request: accessapproval.DeleteAccessApprovalSettingsMessage, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ):
+        def __call__(
+            self,
+            request: accessapproval.DeleteAccessApprovalSettingsMessage,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ):
             r"""Call the delete access approval
-        settings method over HTTP.
+            settings method over HTTP.
 
-            Args:
-                request (~.accessapproval.DeleteAccessApprovalSettingsMessage):
-                    The request object. Request to delete access approval
-                settings.
+                Args:
+                    request (~.accessapproval.DeleteAccessApprovalSettingsMessage):
+                        The request object. Request to delete access approval
+                    settings.
 
-                retry (google.api_core.retry.Retry): Designation of what errors, if any,
-                    should be retried.
-                timeout (float): The timeout for this request.
-                metadata (Sequence[Tuple[str, str]]): Strings which should be
-                    sent along with the request as metadata.
+                    retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                        should be retried.
+                    timeout (float): The timeout for this request.
+                    metadata (Sequence[Tuple[str, str]]): Strings which should be
+                        sent along with the request as metadata.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1/{name=projects/*/accessApprovalSettings}',
-            },
-{
-                'method': 'delete',
-                'uri': '/v1/{name=folders/*/accessApprovalSettings}',
-            },
-{
-                'method': 'delete',
-                'uri': '/v1/{name=organizations/*/accessApprovalSettings}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=projects/*/accessApprovalSettings}",
+                },
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=folders/*/accessApprovalSettings}",
+                },
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=organizations/*/accessApprovalSettings}",
+                },
             ]
-            request, metadata = self._interceptor.pre_delete_access_approval_settings(request, metadata)
+            request, metadata = self._interceptor.pre_delete_access_approval_settings(
+                request, metadata
+            )
             pb_request = accessapproval.DeleteAccessApprovalSettingsMessage.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -570,12 +656,14 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
         def __hash__(self):
             return hash("DismissApprovalRequest")
 
-        def __call__(self,
-                request: accessapproval.DismissApprovalRequestMessage, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> accessapproval.ApprovalRequest:
+        def __call__(
+            self,
+            request: accessapproval.DismissApprovalRequestMessage,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> accessapproval.ApprovalRequest:
             r"""Call the dismiss approval request method over HTTP.
 
             Args:
@@ -596,55 +684,60 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=projects/*/approvalRequests/*}:dismiss',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1/{name=folders/*/approvalRequests/*}:dismiss',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1/{name=organizations/*/approvalRequests/*}:dismiss',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/approvalRequests/*}:dismiss",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=folders/*/approvalRequests/*}:dismiss",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=organizations/*/approvalRequests/*}:dismiss",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_dismiss_approval_request(request, metadata)
+            request, metadata = self._interceptor.pre_dismiss_approval_request(
+                request, metadata
+            )
             pb_request = accessapproval.DismissApprovalRequestMessage.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -663,72 +756,84 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
         def __hash__(self):
             return hash("GetAccessApprovalServiceAccount")
 
-        def __call__(self,
-                request: accessapproval.GetAccessApprovalServiceAccountMessage, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> accessapproval.AccessApprovalServiceAccount:
+        def __call__(
+            self,
+            request: accessapproval.GetAccessApprovalServiceAccountMessage,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> accessapproval.AccessApprovalServiceAccount:
             r"""Call the get access approval
-        service account method over HTTP.
+            service account method over HTTP.
 
-            Args:
-                request (~.accessapproval.GetAccessApprovalServiceAccountMessage):
-                    The request object. Request to get an Access Approval
-                service account.
+                Args:
+                    request (~.accessapproval.GetAccessApprovalServiceAccountMessage):
+                        The request object. Request to get an Access Approval
+                    service account.
 
-                retry (google.api_core.retry.Retry): Designation of what errors, if any,
-                    should be retried.
-                timeout (float): The timeout for this request.
-                metadata (Sequence[Tuple[str, str]]): Strings which should be
-                    sent along with the request as metadata.
+                    retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                        should be retried.
+                    timeout (float): The timeout for this request.
+                    metadata (Sequence[Tuple[str, str]]): Strings which should be
+                        sent along with the request as metadata.
 
-            Returns:
-                ~.accessapproval.AccessApprovalServiceAccount:
-                    Access Approval service account
-                related to a
-                project/folder/organization.
+                Returns:
+                    ~.accessapproval.AccessApprovalServiceAccount:
+                        Access Approval service account
+                    related to a
+                    project/folder/organization.
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/serviceAccount}',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{name=folders/*/serviceAccount}',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{name=organizations/*/serviceAccount}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/serviceAccount}",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=folders/*/serviceAccount}",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=organizations/*/serviceAccount}",
+                },
             ]
-            request, metadata = self._interceptor.pre_get_access_approval_service_account(request, metadata)
-            pb_request = accessapproval.GetAccessApprovalServiceAccountMessage.pb(request)
+            (
+                request,
+                metadata,
+            ) = self._interceptor.pre_get_access_approval_service_account(
+                request, metadata
+            )
+            pb_request = accessapproval.GetAccessApprovalServiceAccountMessage.pb(
+                request
+            )
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -747,72 +852,79 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
         def __hash__(self):
             return hash("GetAccessApprovalSettings")
 
-        def __call__(self,
-                request: accessapproval.GetAccessApprovalSettingsMessage, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> accessapproval.AccessApprovalSettings:
+        def __call__(
+            self,
+            request: accessapproval.GetAccessApprovalSettingsMessage,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> accessapproval.AccessApprovalSettings:
             r"""Call the get access approval
-        settings method over HTTP.
+            settings method over HTTP.
 
-            Args:
-                request (~.accessapproval.GetAccessApprovalSettingsMessage):
-                    The request object. Request to get access approval
-                settings.
+                Args:
+                    request (~.accessapproval.GetAccessApprovalSettingsMessage):
+                        The request object. Request to get access approval
+                    settings.
 
-                retry (google.api_core.retry.Retry): Designation of what errors, if any,
-                    should be retried.
-                timeout (float): The timeout for this request.
-                metadata (Sequence[Tuple[str, str]]): Strings which should be
-                    sent along with the request as metadata.
+                    retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                        should be retried.
+                    timeout (float): The timeout for this request.
+                    metadata (Sequence[Tuple[str, str]]): Strings which should be
+                        sent along with the request as metadata.
 
-            Returns:
-                ~.accessapproval.AccessApprovalSettings:
-                    Settings on a
-                Project/Folder/Organization related to
-                Access Approval.
+                Returns:
+                    ~.accessapproval.AccessApprovalSettings:
+                        Settings on a
+                    Project/Folder/Organization related to
+                    Access Approval.
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/accessApprovalSettings}',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{name=folders/*/accessApprovalSettings}',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{name=organizations/*/accessApprovalSettings}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/accessApprovalSettings}",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=folders/*/accessApprovalSettings}",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=organizations/*/accessApprovalSettings}",
+                },
             ]
-            request, metadata = self._interceptor.pre_get_access_approval_settings(request, metadata)
+            request, metadata = self._interceptor.pre_get_access_approval_settings(
+                request, metadata
+            )
             pb_request = accessapproval.GetAccessApprovalSettingsMessage.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -831,12 +943,14 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
         def __hash__(self):
             return hash("GetApprovalRequest")
 
-        def __call__(self,
-                request: accessapproval.GetApprovalRequestMessage, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> accessapproval.ApprovalRequest:
+        def __call__(
+            self,
+            request: accessapproval.GetApprovalRequestMessage,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> accessapproval.ApprovalRequest:
             r"""Call the get approval request method over HTTP.
 
             Args:
@@ -855,44 +969,49 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/approvalRequests/*}',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{name=folders/*/approvalRequests/*}',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{name=organizations/*/approvalRequests/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/approvalRequests/*}",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=folders/*/approvalRequests/*}",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=organizations/*/approvalRequests/*}",
+                },
             ]
-            request, metadata = self._interceptor.pre_get_approval_request(request, metadata)
+            request, metadata = self._interceptor.pre_get_approval_request(
+                request, metadata
+            )
             pb_request = accessapproval.GetApprovalRequestMessage.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -911,82 +1030,89 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
         def __hash__(self):
             return hash("InvalidateApprovalRequest")
 
-        def __call__(self,
-                request: accessapproval.InvalidateApprovalRequestMessage, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> accessapproval.ApprovalRequest:
+        def __call__(
+            self,
+            request: accessapproval.InvalidateApprovalRequestMessage,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> accessapproval.ApprovalRequest:
             r"""Call the invalidate approval
-        request method over HTTP.
+            request method over HTTP.
 
-            Args:
-                request (~.accessapproval.InvalidateApprovalRequestMessage):
-                    The request object. Request to invalidate an existing
-                approval.
+                Args:
+                    request (~.accessapproval.InvalidateApprovalRequestMessage):
+                        The request object. Request to invalidate an existing
+                    approval.
 
-                retry (google.api_core.retry.Retry): Designation of what errors, if any,
-                    should be retried.
-                timeout (float): The timeout for this request.
-                metadata (Sequence[Tuple[str, str]]): Strings which should be
-                    sent along with the request as metadata.
+                    retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                        should be retried.
+                    timeout (float): The timeout for this request.
+                    metadata (Sequence[Tuple[str, str]]): Strings which should be
+                        sent along with the request as metadata.
 
-            Returns:
-                ~.accessapproval.ApprovalRequest:
-                    A request for the customer to approve
-                access to a resource.
+                Returns:
+                    ~.accessapproval.ApprovalRequest:
+                        A request for the customer to approve
+                    access to a resource.
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=projects/*/approvalRequests/*}:invalidate',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1/{name=folders/*/approvalRequests/*}:invalidate',
-                'body': '*',
-            },
-{
-                'method': 'post',
-                'uri': '/v1/{name=organizations/*/approvalRequests/*}:invalidate',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/approvalRequests/*}:invalidate",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=folders/*/approvalRequests/*}:invalidate",
+                    "body": "*",
+                },
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=organizations/*/approvalRequests/*}:invalidate",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_invalidate_approval_request(request, metadata)
+            request, metadata = self._interceptor.pre_invalidate_approval_request(
+                request, metadata
+            )
             pb_request = accessapproval.InvalidateApprovalRequestMessage.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1005,12 +1131,14 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
         def __hash__(self):
             return hash("ListApprovalRequests")
 
-        def __call__(self,
-                request: accessapproval.ListApprovalRequestsMessage, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> accessapproval.ListApprovalRequestsResponse:
+        def __call__(
+            self,
+            request: accessapproval.ListApprovalRequestsMessage,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> accessapproval.ListApprovalRequestsResponse:
             r"""Call the list approval requests method over HTTP.
 
             Args:
@@ -1029,44 +1157,49 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*}/approvalRequests',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{parent=folders/*}/approvalRequests',
-            },
-{
-                'method': 'get',
-                'uri': '/v1/{parent=organizations/*}/approvalRequests',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*}/approvalRequests",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=folders/*}/approvalRequests",
+                },
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=organizations/*}/approvalRequests",
+                },
             ]
-            request, metadata = self._interceptor.pre_list_approval_requests(request, metadata)
+            request, metadata = self._interceptor.pre_list_approval_requests(
+                request, metadata
+            )
             pb_request = accessapproval.ListApprovalRequestsMessage.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1085,83 +1218,90 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
         def __hash__(self):
             return hash("UpdateAccessApprovalSettings")
 
-        def __call__(self,
-                request: accessapproval.UpdateAccessApprovalSettingsMessage, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> accessapproval.AccessApprovalSettings:
+        def __call__(
+            self,
+            request: accessapproval.UpdateAccessApprovalSettingsMessage,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> accessapproval.AccessApprovalSettings:
             r"""Call the update access approval
-        settings method over HTTP.
+            settings method over HTTP.
 
-            Args:
-                request (~.accessapproval.UpdateAccessApprovalSettingsMessage):
-                    The request object. Request to update access approval
-                settings.
+                Args:
+                    request (~.accessapproval.UpdateAccessApprovalSettingsMessage):
+                        The request object. Request to update access approval
+                    settings.
 
-                retry (google.api_core.retry.Retry): Designation of what errors, if any,
-                    should be retried.
-                timeout (float): The timeout for this request.
-                metadata (Sequence[Tuple[str, str]]): Strings which should be
-                    sent along with the request as metadata.
+                    retry (google.api_core.retry.Retry): Designation of what errors, if any,
+                        should be retried.
+                    timeout (float): The timeout for this request.
+                    metadata (Sequence[Tuple[str, str]]): Strings which should be
+                        sent along with the request as metadata.
 
-            Returns:
-                ~.accessapproval.AccessApprovalSettings:
-                    Settings on a
-                Project/Folder/Organization related to
-                Access Approval.
+                Returns:
+                    ~.accessapproval.AccessApprovalSettings:
+                        Settings on a
+                    Project/Folder/Organization related to
+                    Access Approval.
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'patch',
-                'uri': '/v1/{settings.name=projects/*/accessApprovalSettings}',
-                'body': 'settings',
-            },
-{
-                'method': 'patch',
-                'uri': '/v1/{settings.name=folders/*/accessApprovalSettings}',
-                'body': 'settings',
-            },
-{
-                'method': 'patch',
-                'uri': '/v1/{settings.name=organizations/*/accessApprovalSettings}',
-                'body': 'settings',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "patch",
+                    "uri": "/v1/{settings.name=projects/*/accessApprovalSettings}",
+                    "body": "settings",
+                },
+                {
+                    "method": "patch",
+                    "uri": "/v1/{settings.name=folders/*/accessApprovalSettings}",
+                    "body": "settings",
+                },
+                {
+                    "method": "patch",
+                    "uri": "/v1/{settings.name=organizations/*/accessApprovalSettings}",
+                    "body": "settings",
+                },
             ]
-            request, metadata = self._interceptor.pre_update_access_approval_settings(request, metadata)
+            request, metadata = self._interceptor.pre_update_access_approval_settings(
+                request, metadata
+            )
             pb_request = accessapproval.UpdateAccessApprovalSettingsMessage.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1177,76 +1317,99 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
             return resp
 
     @property
-    def approve_approval_request(self) -> Callable[
-            [accessapproval.ApproveApprovalRequestMessage],
-            accessapproval.ApprovalRequest]:
+    def approve_approval_request(
+        self,
+    ) -> Callable[
+        [accessapproval.ApproveApprovalRequestMessage], accessapproval.ApprovalRequest
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ApproveApprovalRequest(self._session, self._host, self._interceptor) # type: ignore
+        return self._ApproveApprovalRequest(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def delete_access_approval_settings(self) -> Callable[
-            [accessapproval.DeleteAccessApprovalSettingsMessage],
-            empty_pb2.Empty]:
+    def delete_access_approval_settings(
+        self,
+    ) -> Callable[
+        [accessapproval.DeleteAccessApprovalSettingsMessage], empty_pb2.Empty
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteAccessApprovalSettings(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteAccessApprovalSettings(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def dismiss_approval_request(self) -> Callable[
-            [accessapproval.DismissApprovalRequestMessage],
-            accessapproval.ApprovalRequest]:
+    def dismiss_approval_request(
+        self,
+    ) -> Callable[
+        [accessapproval.DismissApprovalRequestMessage], accessapproval.ApprovalRequest
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DismissApprovalRequest(self._session, self._host, self._interceptor) # type: ignore
+        return self._DismissApprovalRequest(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_access_approval_service_account(self) -> Callable[
-            [accessapproval.GetAccessApprovalServiceAccountMessage],
-            accessapproval.AccessApprovalServiceAccount]:
+    def get_access_approval_service_account(
+        self,
+    ) -> Callable[
+        [accessapproval.GetAccessApprovalServiceAccountMessage],
+        accessapproval.AccessApprovalServiceAccount,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetAccessApprovalServiceAccount(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetAccessApprovalServiceAccount(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_access_approval_settings(self) -> Callable[
-            [accessapproval.GetAccessApprovalSettingsMessage],
-            accessapproval.AccessApprovalSettings]:
+    def get_access_approval_settings(
+        self,
+    ) -> Callable[
+        [accessapproval.GetAccessApprovalSettingsMessage],
+        accessapproval.AccessApprovalSettings,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetAccessApprovalSettings(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetAccessApprovalSettings(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_approval_request(self) -> Callable[
-            [accessapproval.GetApprovalRequestMessage],
-            accessapproval.ApprovalRequest]:
+    def get_approval_request(
+        self,
+    ) -> Callable[
+        [accessapproval.GetApprovalRequestMessage], accessapproval.ApprovalRequest
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetApprovalRequest(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetApprovalRequest(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def invalidate_approval_request(self) -> Callable[
-            [accessapproval.InvalidateApprovalRequestMessage],
-            accessapproval.ApprovalRequest]:
+    def invalidate_approval_request(
+        self,
+    ) -> Callable[
+        [accessapproval.InvalidateApprovalRequestMessage],
+        accessapproval.ApprovalRequest,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._InvalidateApprovalRequest(self._session, self._host, self._interceptor) # type: ignore
+        return self._InvalidateApprovalRequest(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_approval_requests(self) -> Callable[
-            [accessapproval.ListApprovalRequestsMessage],
-            accessapproval.ListApprovalRequestsResponse]:
+    def list_approval_requests(
+        self,
+    ) -> Callable[
+        [accessapproval.ListApprovalRequestsMessage],
+        accessapproval.ListApprovalRequestsResponse,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListApprovalRequests(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListApprovalRequests(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_access_approval_settings(self) -> Callable[
-            [accessapproval.UpdateAccessApprovalSettingsMessage],
-            accessapproval.AccessApprovalSettings]:
+    def update_access_approval_settings(
+        self,
+    ) -> Callable[
+        [accessapproval.UpdateAccessApprovalSettingsMessage],
+        accessapproval.AccessApprovalSettings,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateAccessApprovalSettings(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateAccessApprovalSettings(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def kind(self) -> str:
@@ -1256,6 +1419,4 @@ class AccessApprovalRestTransport(AccessApprovalTransport):
         self._session.close()
 
 
-__all__=(
-    'AccessApprovalRestTransport',
-)
+__all__ = ("AccessApprovalRestTransport",)
